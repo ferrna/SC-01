@@ -1,0 +1,11 @@
+#comp_foo_footer {
+  background-color: var(--lt-color-white-500);
+}
+#comp_foo_logo {
+  width: 5rem;
+  height: auto;
+}
+#comp_foo_section {
+  display: flex;
+  justify-content: space-around;
+}

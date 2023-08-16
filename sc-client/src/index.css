@@ -46,6 +46,16 @@
   --lt-color-black-600: #242424;
 }
 
+:root {
+  --lt-comp_hea_header-height: 10vh;
+}
+
+*,
+body {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 body {
   direction: ltr;
   font-family: Noto Sans, sans-serif;
@@ -54,4 +64,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #232323;
   line-height: 1.25em;
+  min-height: 100vh;
 }

@@ -37,6 +37,7 @@
   --lt-color-white-200: #fafafa;
   --lt-color-white-400: #f6f6f6;
   --lt-color-white-500: #f5f5f5;
+  --lt-color-white-700: #e6e6e6;
   --lt-color-blue-500: #002a5e;
   --lt-color-black-100: #a09898;
   --lt-color-black-200: #77756c;
@@ -65,4 +66,9 @@ body {
   color: #232323;
   line-height: 1.25em;
   min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

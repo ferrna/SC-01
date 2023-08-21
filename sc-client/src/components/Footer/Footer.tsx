@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Logo from '../../images/Logo.png'
-import './Footer.styles.css'
+import './footer.styles.css'
 
 interface FooterProps {}
 

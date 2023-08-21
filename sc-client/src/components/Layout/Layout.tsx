@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Homepage } from '../../pages/Homepage/Homepage'
-import './Layout.styles.css'
+import './layout.styles.css'
 import { Route, Routes } from 'react-router-dom'
 import { Busqueda } from '../../pages/Busqueda/Busqueda'
 

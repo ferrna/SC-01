@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import './Header.styles.css'
+import './header.styles.css'
 
 interface HeaderProps {}
 

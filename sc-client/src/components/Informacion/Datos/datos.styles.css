@@ -1,11 +1,15 @@
 #comp_inf_main {
-  background: var(--lt-color-orange-600);
   width: 100%;
+  color: #fff;
+}
+
+#comp_inf_main-container {
+  background: var(--lt-color-orange-600);
+  padding: 20px;
   float: left;
   text-align: center;
   padding: 20px;
   margin: 20px;
-  color: #fff;
 }
 
 #comp_inf_main > * {
@@ -17,7 +21,7 @@
   border-bottom: 1px solid #fff;
 }
 
-#comp_inf_main > div {
+#comp_inf_main-container > div {
   padding: 30px 0;
   display: flex;
   flex-direction: column;

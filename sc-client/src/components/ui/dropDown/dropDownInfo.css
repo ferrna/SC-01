@@ -1,14 +1,44 @@
-.dropDownInfo_div {
+.dropDownInfo {
+  border-bottom: 1px solid var(--lt-color-white-700);
+  width: 100%;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 
-.dropDownInfo_div h3 {
+.dropDownInfo__title {
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  line-height: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.dropDownInfo__title * {
+  margin: 0;
+}
+
+.dropDownInfo__content {
+  max-height: 0; /* Initially hidden */
+  margin: 0;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  transition: max-height 0.8s ease; /* Add a smooth transition */
+  display: flex;
+  flex-direction: column;
+}
+.dropDownInfo__content.toggled {
+  max-height: 200px; /* Adjust this value to your desired expanded height */
+}
+
+.dropDownInfo__title input:hover {
+  cursor: pointer;
+}
+
+.dropDownInfo__content > a {
   width: 100%;
+  text-align: left;
+  padding: 0.2rem 1rem;
+  line-height: 1.2rem;
 }

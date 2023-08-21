@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { InformacionGeneral } from '../../components/InformacionGeneral/InformacionGeneral'
+import { Informacion } from '../../components/Informacion/Informacion'
 
 interface HomepageProps {}
 
@@ -7,7 +7,7 @@ export const Homepage: FC<HomepageProps> = ({}) => {
   return (
     <>
       <div>Homepage</div>
-      <InformacionGeneral />
+      <Informacion />
     </>
   )
 }

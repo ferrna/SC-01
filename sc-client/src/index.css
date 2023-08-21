@@ -1,3 +1,5 @@
+@import url('./common/normalize.css');
+
 :root {
   --lt-color-gray-100: #f8f9fc;
   --lt-color-gray-200: #f1f3f9;
@@ -68,7 +70,14 @@ body {
   min-height: 100vh;
 }
 
-a {
+a,
+button {
   text-decoration: none;
+  background-color: inherit;
   color: inherit;
+  border: none;
+}
+button:hover {
+  background-color: inherit;
+  cursor: pointer;
 }

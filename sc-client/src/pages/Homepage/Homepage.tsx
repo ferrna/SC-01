@@ -1,12 +1,13 @@
 import { FC } from 'react'
-import { Informacion } from '../../components/Informacion/Informacion'
+import Informacion from '../../components/Informacion/Informacion'
+import Productos from '../../components/Productos/Productos'
 
 interface HomepageProps {}
 
 export const Homepage: FC<HomepageProps> = ({}) => {
   return (
     <>
-      <div>Homepage</div>
+      <Productos />
       <Informacion />
     </>
   )

@@ -5,7 +5,7 @@ import { Preguntas } from './Preguntas/Preguntas'
 
 interface InformacionProps {}
 
-export const Informacion: FC<InformacionProps> = ({}) => {
+const Informacion: FC<InformacionProps> = ({}) => {
   return (
     <section id="comp_inf_section">
       <div id="comp_inf_section-container">
@@ -15,3 +15,5 @@ export const Informacion: FC<InformacionProps> = ({}) => {
     </section>
   )
 }
+
+export default Informacion;

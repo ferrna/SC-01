@@ -1,8 +1,7 @@
 #comp_hea_header {
-  padding: 20px;
   background-color: var(--lt-color-white-400);
   text-align: center;
   position: fixed;
+  top: 0px;
   width: 100%;
-  height: var(--lt-comp_hea_header-height);
 }

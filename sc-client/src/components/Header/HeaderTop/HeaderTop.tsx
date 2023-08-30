@@ -6,16 +6,11 @@ import { TbNotebook } from 'react-icons/tb'
 import LogoOnly from '../../../images/LogoOnly.png'
 
 interface HeaderTopProps {
-  
+  handleToggleClick: () => void,
 }
 
-const HeaderTop: FC<HeaderTopProps> = ({ }) => {
-  const [isToggled, setIsToggled] = useState(false)
+const HeaderTop: FC<HeaderTopProps> = ({handleToggleClick}) => {
 
-  const handleToggleClick = () => {
-    setIsToggled((prevState) => !prevState)
-  }
-    
   return (
       <div className='header-top'>
           <div className='header-top__menu' onClick={handleToggleClick}>
@@ -34,9 +29,6 @@ const HeaderTop: FC<HeaderTopProps> = ({ }) => {
                 <TbNotebook style={{ color: '#343434', padding: "8px 0 2px 0" }} size={40} />
                 <span>Blog</span>
               </div>
-          </div>
-          <div className={`header-dropDown ${isToggled ? 'toggled' : ''}`}>
-              <div className="header-dropDown__menu">Span item menu</div>
           </div>
       </div>
   )

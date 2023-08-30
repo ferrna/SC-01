@@ -1,7 +1,139 @@
 #comp_hea_header {
-  background-color: var(--lt-color-white-400);
   text-align: center;
   position: fixed;
   top: 0px;
   width: 100%;
+}
+#_mobile_header_logotxt {
+  background-color: #fff;
+  border: none;
+  border-top: 1px solid #e6e6e6;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px;
+  height: 45px;
+}
+#_mobile_header_logotxt span {
+  font-size: 12px;
+  line-height: 16px;
+}
+#_mobile_header_buscar {
+  background-color: #fff;
+  padding-top: 3.18px;
+  position: relative;
+}
+#_mobile_header_input {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  color: #666;
+  background-color: #ededed;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  height: 41px;
+}
+#_mobile_header_icon {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  padding: 0.2rem 0.4rem;
+  color: #343434;
+  background-color: #ededed;
+}
+.fi-search {
+  stroke-width: 3;
+}
+
+.header-dropDown {
+  visibility: hidden;
+  position: absolute;
+  top: 149px;
+  left: 0px;
+  width: 100%;
+  overflow: hidden;
+  bottom: 0%;
+  height: calc(100vh - 149px);
+  background-color: #00000054;
+  z-index: 100;
+}
+/* Adding height of _bg_barra_neon in big screen ... */
+@media (min-width: 601px) {
+  .header-dropDown {
+    top: calc(149px + 23.2px);  /* Resize for big screen (_bg_barra_neon) */
+    height: calc(100vh - 149px - 23.2px);
+  }
+}
+/* ... Adding height of _bg_barra_neon in big screen */
+.header-dropDown.toggled {
+  visibility: visible;
+  width: 100%;
+  left: 0px;
+}
+.header-dropDown__menu {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 15px);
+    left: -100%;
+    top: 0px;
+    background-color: #fff;
+    box-shadow: 8px 10px 14px -9px #515151;
+    padding: 0 0.5rem;
+    padding-right: 1.5rem;
+    margin: 0;
+    transition: all ease 1s;
+}
+.header-dropDown.toggled > .header-dropDown__menu {
+    left: 0%;
+}
+
+
+#_bg_barra_neon {
+  display: none;
+}
+#_bg_neon_container {
+    width: 200%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+@media (min-width: 601px) {
+  #_bg_barra_neon {
+    display: block;
+    overflow: hidden;
+    z-index: 100;
+    background-color: #77756c;
+  }
+  #_bg_neon_container > div {
+    grid-column: span 1;
+    text-align: left;
+    padding: 2px 2rem;
+    width: 100%;
+    animation: 18s ease-in-out infinite traslateNeon;
+
+    display: flex;
+    align-items: center;
+  }
+  @keyframes traslateNeon {
+	  0% {
+      transform: translateX(0%);
+	  }
+    25% {
+      transform: translateX(0%);
+    }
+	  100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.fa-regclock {
+  display: flex;
+  align-items: center;
+  margin: 0 0.25rem;
 }

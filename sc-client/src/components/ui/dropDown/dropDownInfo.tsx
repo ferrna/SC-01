@@ -26,7 +26,7 @@ export const DropDownInfo: FC<dropDownInfoProps> = ({
     <div className="dropDownInfo">
       <button className="dropDownInfo__title" onClick={handleToggleClick}>
         <h3 aria-expanded="true">{title}</h3>
-        <FaAngleDown style={{ color: '#5b5b5b' }} />
+        <FaAngleDown style={{ color: '#5b5b5b' }} className={`fa-angledown ${isToggled ? 'toggled' : ''}`} />
       </button>
       <div className={`dropDownInfo__content ${isToggled ? 'toggled' : ''}`}>
         {items && items.map((i) => <a>{i[0]}</a>)}

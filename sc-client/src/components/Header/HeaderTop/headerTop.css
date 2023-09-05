@@ -1,4 +1,4 @@
-.header-top {
+.headerTop {
     width: 100%;
     height: 60px;
     display: flex;
@@ -6,7 +6,8 @@
     background-color: #fff;
     position: relative;
 }
-.header-top__menu {
+/* Header: Menu burger button */
+.headerTop__menu {
     height: 100%;
     padding: 0 0.5rem;
     padding-right: 1.5rem;
@@ -16,24 +17,27 @@
     justify-content: flex-start;
     align-items: center;
 }
-.header-top__menu span {
+/* Header: Menu burger tag */
+.headerTop__menu span {
     font-size: 0.6rem;
     line-height: 0.7rem;
     font-weight: 300;
     color: #454545;
 }
-.header-top__logo {
+/* Header: Logo container */
+.headerTop__logo {
     max-width: 40%;
     margin: 0;
 }
-.header-top__logo img {
+.headerTop__logo img {
     height: 100%;
 }
-.header-top__icons {
+/* Header: Icons container */
+.headerTop__icons {
     margin: 0;
     display: flex;
 }
-.header-top__icon {
+.headerTop__icon {
     height: 100%;
     padding: 0 0.3rem;
     margin: 0;
@@ -42,7 +46,8 @@
     justify-content: flex-start;
     align-items: center;
 }
-.header-top__icon span {
+/* Header: Icons tag */
+.headerTop__icon span {
     font-size: 0.6rem;
     line-height: 0.7rem;
     font-weight: 300;

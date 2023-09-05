@@ -1,0 +1,10 @@
+For components or components container:
+Id 'comp' firstThreeLettersOfComponentName htmlElementContainer
+e.g. header:
+#comp_hea_header
+
+For children elements or components:
+ container:
+ class componentOrElementFileName
+ children container:
+ class componentOrElementFileName '__' div

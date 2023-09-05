@@ -4,7 +4,7 @@
   top: 0px;
   width: 100%;
 }
-#_mobile_header_logotxt {
+#_mobile_header_banner {
   background-color: #fff;
   border: none;
   border-top: 1px solid #e6e6e6;
@@ -15,16 +15,24 @@
   padding: 10px;
   height: 45px;
 }
-#_mobile_header_logotxt span {
+#_mobile_header_banner span {
   font-size: 12px;
   line-height: 16px;
 }
-#_mobile_header_buscar {
+#_mobile_header_searchbar {
   background-color: #fff;
   padding-top: 3.18px;
   position: relative;
 }
-#_mobile_header_input {
+#_searchbar_icon {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  padding: 0.2rem 0.4rem;
+  color: #343434;
+  background-color: #ededed;
+}
+#_searchbar_input {
   border: none;
   border-bottom: 1px solid #ddd;
   color: #666;
@@ -33,14 +41,6 @@
   width: 100%;
   padding: 10px 10px 10px 40px;
   height: 41px;
-}
-#_mobile_header_icon {
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  padding: 0.2rem 0.4rem;
-  color: #343434;
-  background-color: #ededed;
 }
 .fi-search {
   stroke-width: 3;

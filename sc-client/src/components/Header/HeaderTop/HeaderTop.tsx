@@ -8,15 +8,15 @@ import { TbNotebook } from 'react-icons/tb'
 import LogoOnly from '../../../images/LogoOnly.png'
 
 interface HeaderTopProps {
-  handleToggleClick: () => void,
+  toggleBurger: () => void,
 }
 
-const HeaderTop: FC<HeaderTopProps> = ({handleToggleClick}) => {
+const HeaderTop: FC<HeaderTopProps> = ({toggleBurger}) => {
 
   return (
     <div className='headerTop'>
           {/* Toggle handler to show dropdown Menu */}
-          <button className='headerTop__menu' onClick={handleToggleClick}>
+          <button className='headerTop__menu' onClick={toggleBurger}>
               <SlMenu style={{ color: '#343434', padding: "10px 0 0 0" }} size={40} />
               <span>Menú</span>
           </button>

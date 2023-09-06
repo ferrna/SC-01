@@ -3,8 +3,10 @@ import './productos.styles.css';
 // import axios from 'axios';
 import { Product } from '../../common/types';
 import ItemProducto from './ItemProducto/ItemProducto';
-// hardcode data
+// hardcoded data
 import { productsMock } from '../mockData'
+
+import { v4 as uuidv4 } from 'uuid';
 
 const Productos: FC = () => {
 
@@ -28,7 +30,7 @@ const Productos: FC = () => {
       <h2>NUESTROS PRODUCTOS</h2>
       <h3>PRODUCTOS POPULARES</h3>
       <div id="comp_pro_section-container">
-        {products && products.map((product) => <ItemProducto product={product}/>)}
+        {products && products.map((product) => <ItemProducto product={product} key={uuidv4()}/>)}
       </div>
     </section>
   )

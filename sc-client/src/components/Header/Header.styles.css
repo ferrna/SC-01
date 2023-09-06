@@ -23,6 +23,7 @@
   background-color: #fff;
   padding-top: 3.18px;
   position: relative;
+  width: 100%;
 }
 #_searchbar_icon {
   position: absolute;
@@ -41,6 +42,17 @@
   width: 100%;
   padding: 10px 10px 10px 40px;
   height: 41px;
+}
+#_searchbar_ {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  z-index: 200;
+  opacity: 0;
+  cursor: text;
 }
 .fi-search {
   stroke-width: 3;
@@ -66,7 +78,7 @@
   }
 }
 /* ... Adding height of _bg_barra_neon in big screen */
-.header-dropDown.toggled {
+.header-dropDown.open {
   visibility: visible;
   width: 100%;
   left: 0px;
@@ -85,7 +97,7 @@
     margin: 0;
     transition: all ease 1s;
 }
-.header-dropDown.toggled > .header-dropDown__menu {
+.header-dropDown.open > .header-dropDown__menu {
     left: 0%;
 }
 

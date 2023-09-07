@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import './headerSearch.css'
 import { TbArrowBack } from 'react-icons/tb'
 import { FiSearch } from 'react-icons/fi'
+import ResultsSection from './ResultsSection/ResultsSection'
 
 interface HeaderSearchProps {
   isSearchOpen: boolean
@@ -50,11 +51,8 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
           </div>
         </search>
         <section className={`headerSearch__section ${isElementVisible ? ' open' : ''}`}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Quisquam itaque, doloremque rem alias ducimus facilis nihil
-            eligendi illum impedit aut earum, fugiat eius dolorum? Iste, vero?
-            Quod porro veniam et.
-          </section>
+          <ResultsSection />
+        </section>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 .headerSearch {
     width: 100%;
     position: relative;
-    z-index: 200;
+    z-index: 300;
 }
 .headerSearch-container {
     position: absolute;

@@ -5,6 +5,7 @@ import { PiClockCounterClockwiseLight } from 'react-icons/pi'
 import mockImage from '../../../../images/barimix-30-capsulas.jpg'
 import {productsMock} from '../../../mockData'
 
+import { v4 as uuidv4 } from 'uuid';
 interface SuggestionsSection {
   
 }
@@ -28,7 +29,7 @@ const SuggestionsSection: FC<SuggestionsSection> = ({ }) => {
         <div className='_suggestions-section__title'><h3>Productos populares</h3></div>
           <div className='_suggestions-section_products'>
               {products && products.map((product, index) => (
-                  <div className='_suggestions-section_product-container'>
+                  <div className='_suggestions-section_product-container' key={uuidv4()}>
                       <img src={mockImage} alt={product.name} style={{ width: "100%" }} />
                       <h3 className='_suggestions-section_product-name'><a href='#'>{product.name}</a></h3>
                       <span className='_suggestions-section_product-price'><span>{"$ "}</span>{product.price}</span>

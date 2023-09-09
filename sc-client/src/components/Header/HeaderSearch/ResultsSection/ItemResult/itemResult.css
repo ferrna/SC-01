@@ -1,0 +1,35 @@
+._results-section_result__img {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #fff;
+}
+._results-section_result__img img {
+    max-width: 100%;
+    object-fit: contain;
+}
+._results-section_result__info {
+    padding: 0.5rem 0.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+._results-section_result__info div {
+    margin:0;
+    margin-bottom: 16px;
+}
+._results-section_result__actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+._results-section_result__actions button {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    background-color: var(--lt-color-black-500);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+}

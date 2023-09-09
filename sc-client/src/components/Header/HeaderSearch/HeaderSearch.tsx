@@ -107,9 +107,12 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
             </div>
           </div>
         </search>
-        <section className={`headerSearch__section ${isElementVisible || isResultsVisible ? ' open' : ''}`}>
+        {<section className={`headerSearch__section ${isElementVisible || isResultsVisible ? ' open' : ''}`}>
           {isElementVisible ? <SuggestionsSection /> : isResultsVisible ? <ResultsSection products={productsFetched} /> : null}
-        </section>
+        </section>}
+        {/* <section className={`headerSearch__section ${isElementVisible || isResultsVisible ? ' open' : ''}`}>
+          {productsFetched ? <ResultsSection products={productsFetched} /> : null}
+        </section> */}
       </div>
     </div>
   )

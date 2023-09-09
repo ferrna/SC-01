@@ -1,3 +1,58 @@
 ._results-section {
     width: 100%;
+    height: 100%;
+    font-size: 14px;
+    position: relative;
+}
+
+/* absolute positioned to component for hidding and showing effect on user scroll */
+._results-section__filters {
+    background-color: #fff;
+    width: calc(100% - 3rem);
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    transition: top 0.3s ease-out;
+}
+._results-section__filters.hide {
+    top: -2rem;
+}
+
+._results-section-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0 1.5rem 0.5rem;
+
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr);
+    grid-template-rows: calc(2rem+0.5rem) auto;
+    grid-template-areas: "filters" "results";
+}
+
+/* empty box to take filtersbar space absolute positioned */
+._results-section__filters-gridspace {
+    width: 100%;
+    height: 2rem;
+    grid-area: "filters";
+}
+
+/* container with the result's items */
+._results-section__results {
+    display: grid;
+    grid-template: auto / minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px 16px;
+    padding:0;
+    padding-bottom: 1.5rem;
+}
+@media screen and (min-width: 768px) {
+    ._results-section-results {
+        grid-template: auto / 1fr 1fr 1fr 1fr;
+    }
 }

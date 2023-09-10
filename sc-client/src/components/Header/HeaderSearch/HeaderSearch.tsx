@@ -13,6 +13,10 @@ interface HeaderSearchProps {
   toggleSearch: () => void
 }
 
+type HistoryState = {
+  history: any[]; // Replace 'any[]' with the actual type of your history data
+};
+
 const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
   
   const [isElementVisible, setIsElementVisible] = useState(false);
@@ -22,6 +26,35 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [productsFetched, setProductsFetched] = useState([...productsMock]);
+
+  const [localHistory, setLocalHistory] = useState<HistoryState>({ history: [{text: "asdijasd"}]})
+  useEffect(()=>{
+    recover();
+  },[])
+  const recover = (): void => {
+    let data = localStorage.getItem('history') || null;
+    if (data === null) {
+      localStorage.setItem('history', JSON.stringify({ history: [] }));
+      return;
+    }
+    try {
+      const parsedData = JSON.parse(data);
+      setLocalHistory({ history: [...parsedData?.history] });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  const saveToStorage = (): void => {
+        let data: HistoryState = {...localHistory}
+        
+        data.history?.push({text: inputValue});
+        setLocalHistory({ history: data.history });
+        localStorage.setItem('history', JSON.stringify(data));
+  }
+  const handleSuggestionClick = (value: string) => {
+    inputRef.current?.focus();
+    setInputValue(value)
+  }
 
   useEffect(() => {
     if (document.activeElement === inputRef?.current) {
@@ -37,8 +70,21 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
         /* const response = await fetch('localhost:5000/products');
         const data = await response.json(); 
         setProductsFetched(data); */
+        console.log('fetching products...')
       }
-      fetchProducts();
+      const timer = setTimeout(() => {
+        
+        if(inputRef != null && inputRef.current?.value === inputValue) {
+          fetchProducts();
+          saveToStorage();
+        }
+      }, 500)
+    
+      // Every time the useEffect runs it creates a new setTimeout function
+      // Returning this cleanup function will run before each new render and remove the old timer
+      return () => {
+        clearTimeout(timer)
+      }
     }
   }, [inputValue])
 
@@ -67,6 +113,11 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
 
   const clearInput = () => {
     setInputValue("");
+  }
+
+  const clearLocalHistory = () => {
+    localStorage.removeItem('history');
+    setLocalHistory({ history: [] });
   }
 
   const handleDeleteClick = () => {
@@ -108,7 +159,7 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
           </div>
         </search>
         {<section className={`headerSearch__section ${isElementVisible || isResultsVisible ? ' open' : ''}`}>
-          {isElementVisible ? <SuggestionsSection /> : isResultsVisible ? <ResultsSection products={productsFetched} /> : null}
+          {isElementVisible ? <SuggestionsSection props={{localHistory, handleSuggestionClick, clearLocalHistory}} /> : isResultsVisible ? <ResultsSection products={productsFetched} /> : null}
         </section>}
         {/* <section className={`headerSearch__section ${isElementVisible || isResultsVisible ? ' open' : ''}`}>
           {productsFetched ? <ResultsSection products={productsFetched} /> : null}
@@ -119,3 +170,11 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
 }
 
 export default HeaderSearch;
+
+
+/* TO DO:
+ - no guardar busquedas similares
+ - no guardar busquedas hasta que el input termine de completarse indistintamente
+ a la frecuencia de la peticion
+ - agregar animacion a la aparicion de items de sugerencias
+ */

@@ -3,6 +3,7 @@ import { Product } from '../../../../common/types'
 import './resultsSection.css'
 import ItemResult from './ItemResult/ItemResult'
 
+import { v4 as uuidv4 } from 'uuid';
 interface ResultsSectionProps {
   products: Product[]
 }
@@ -32,7 +33,7 @@ const ResultsSection: FC<ResultsSectionProps> = ({ products }) => {
       <div className="_results-section-container" onScroll={handleScroll}>
         <div className="_results-section__filters-gridspace"></div>
         <div className="_results-section__results">
-          {products && products.map((product) => <ItemResult product={product}/>)}
+          {products && products.map((product) => <ItemResult key={uuidv4()} product={product}/>)}
         </div>
       </div>
     </div>

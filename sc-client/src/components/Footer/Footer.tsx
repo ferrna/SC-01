@@ -4,7 +4,7 @@ import './footer.styles.css'
 
 interface FooterProps {}
 
-export const Footer: FC<FooterProps> = ({}) => {
+const Footer: FC<FooterProps> = ({}) => {
   return (
     <footer id="comp_foo_footer">
       <section id="comp_foo_section">
@@ -18,3 +18,5 @@ export const Footer: FC<FooterProps> = ({}) => {
     </footer>
   )
 }
+
+export default Footer;

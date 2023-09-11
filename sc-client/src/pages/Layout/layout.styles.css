@@ -1,4 +1,4 @@
-#comp_lay_main {
+#page_layout {
   width: 100%;
   padding-top: var(--lt-comp_hea_header-height);
   min-height: 100vh;

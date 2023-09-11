@@ -1,0 +1,10 @@
+#page_admin {
+  width: 100%;
+  padding-top: var(--lt-comp_hea_header-height);
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

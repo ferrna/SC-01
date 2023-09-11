@@ -1,14 +1,15 @@
 import './app.css'
-import { Footer } from './components/Footer/Footer'
-import Header from './components/Header/Header'
-import { Layout } from './components/Layout/Layout'
+import { Route, Routes } from 'react-router-dom'
+import Layout from './pages/Layout/Layout'
+import Admin from './pages/Admin/Admin'
 
 function App() {
   return (
     <div className="Body">
-      <Header />
-      <Layout />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Layout />} />
+        <Route path="/admin/*" element={<Admin />} />
+      </Routes>
     </div>
   )
 }

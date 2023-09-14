@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
 import './productos.styles.css';
 // import axios from 'axios';
-import { Product } from '../../common/types';
+import { Product } from '../../../common/types';
 import ItemProducto from './ItemProducto/ItemProducto';
 // hardcoded data
-import { productsMock } from '../mockData'
+import { productsMock } from '../../mockData'
 
 import { v4 as uuidv4 } from 'uuid';
 

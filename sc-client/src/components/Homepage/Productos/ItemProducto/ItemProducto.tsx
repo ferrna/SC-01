@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { Product } from '../../../common/types'
+import { Product } from '../../../../common/types'
 import './itemProducto.css'
-import mockImage from '../../../images/barimix-30-capsulas.jpg'
+import mockImage from '../../../../images/barimix-30-capsulas.jpg'
 
 interface ItemProductoProps {
     product: Product;

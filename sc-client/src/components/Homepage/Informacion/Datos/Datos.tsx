@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Logo from '../../../images/Logo.png'
+import Logo from '../../../../images/Logo.png'
 import './datos.styles.css'
 import { FaRegClock } from 'react-icons/fa'
 

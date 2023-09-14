@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { DropDownInfo } from '../../ui/dropDown/DropDownInfo'
+import { DropDownInfo } from '../../../ui/dropDown/DropDownInfo'
 import './preguntas.styles.css'
 
 interface PreguntasProps {}

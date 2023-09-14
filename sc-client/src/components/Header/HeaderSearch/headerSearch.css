@@ -26,7 +26,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
     overflow: hidden;
     z-index: 400;
     
@@ -39,6 +38,7 @@
 .headerSearch-container.open .headerSearch__search {
     max-height: calc(149px - 41px);
     height: calc(149px - 41px);
+    padding: 5px;
 }
 ._search_goback {
     width: 100%;

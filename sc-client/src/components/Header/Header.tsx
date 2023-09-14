@@ -1,9 +1,10 @@
-import { FC, useState } from 'react'
+import { FC, lazy, Suspense, useState } from 'react'
 import './header.styles.css'
 import HeaderTop from './HeaderTop/HeaderTop';
-import HeaderSearch from './HeaderSearch/HeaderSearch';
 import { FiSearch } from 'react-icons/fi'
 import { FaRegClock } from 'react-icons/fa'
+
+const HeaderSearch = lazy(() => import('./HeaderSearch/HeaderSearch'));
 
 
 interface HeaderProps {}
@@ -19,25 +20,27 @@ const Header: FC<HeaderProps> = ({ }) => {
     setIsSearchOpen((prevState) => !prevState)
   }
 
-  let stringInfoClock = 'HORARIO: Lunes a Viernes de 8 a 12.30 y de 16 a 20 hs. Sabados de 9 a 13 hs.'
+  let stringInfoClock = 'HORARIO: Lunes a Viernes de 8 a 12.30 y 16 a 20 hs. Sabados de 9 a 13 hs.'
     
   return (
     <header id="comp_hea_header">
       {/* Search menu */}
-      <HeaderSearch isSearchOpen={isSearchOpen} toggleSearch={toggleSearch} />
+      <Suspense fallback={<></>}>
+				<HeaderSearch isSearchOpen={isSearchOpen} toggleSearch={toggleSearch} />
+			</Suspense>
       {/* Search menu */}
       {/* Top Opentime info display for big screen */}
       <div id="_bg_barra_neon">
         <div id="_bg_neon_container">
           <div>
             <div className="fa-regclock">
-              <FaRegClock style={{ color: '#fff' }} />
+              <FaRegClock style={{ color: '#545454' }} />
             </div>
             {stringInfoClock}
           </div>
           <div>
             <div className="fa-regclock">
-              <FaRegClock style={{ color: '#fff' }} />
+              <FaRegClock style={{ color: '#545454' }} />
             </div>
             {stringInfoClock}
           </div>

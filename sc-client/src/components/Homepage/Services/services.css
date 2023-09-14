@@ -1,0 +1,8 @@
+#comp_ser_article {
+    width: 100%;
+}
+#comp_ser_article-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -169,7 +169,7 @@ const HeaderSearch: FC<HeaderSearchProps> = ({isSearchOpen, toggleSearch}) => {
   )
 }
 
-export default HeaderSearch;
+export default HeaderSearch as FC<HeaderSearchProps>;
 
 
 /* TO DO:

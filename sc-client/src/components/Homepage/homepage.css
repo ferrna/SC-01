@@ -1,0 +1,10 @@
+#homepage {
+    margin-top: 149px;
+    padding-top: 0.5rem;
+}
+
+@media (min-width: 601px) {
+    #homepage {
+        margin-top: 172px
+    }
+}

@@ -1,0 +1,43 @@
+#comp_slider-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+.comp_slider-content {
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100vw;
+    margin: 0;
+}
+.comp_slider-content::-webkit-scrollbar {
+    display: none;
+}
+.comp_slider-item {
+    flex: 1 0 auto;
+    animation: 18s ease infinite slide;
+    width: 100vw;
+    background-image: url('../HeroArt/Hands_Body.jpg');
+    background-position: center center;
+    background-size: cover;
+    height: 300px;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0%);
+    }
+    20% {
+        transform: translateX(-100%);
+    }
+    40% {
+        transform: translateX(-200%);
+    }
+    60% {
+        transform: translateX(-300%);
+    }
+    80% {
+        transform: translateX(-400%);
+    }
+}

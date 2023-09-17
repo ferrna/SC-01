@@ -14,7 +14,7 @@ const Homepage: FC<HomepageProps> = ({  }) => {
   return (
     <div id="homepage">
       <Slider />
-      {<HeroArt />}
+      {/* <HeroArt /> */}
       <Services />
       <Productos />
       <Informacion />

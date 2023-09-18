@@ -1,6 +1,112 @@
-#comp_inf_div {
+#comp_inf {
+  width: 100%;
+}
+#comp_inf_preguntas-mobile {
   border-top: 1px solid var(--lt-color-white-700);
   width: 100%;
   float: left;
   text-align: center;
+}
+#comp_inf_preguntas-lg {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #comp_inf_preguntas-mobile {
+    display: none;
+  }
+  #comp_inf_preguntas-lg {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+
+    max-width: 754px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  #comp_inf {
+    grid-column: span 8;
+  }
+  #comp_inf_preguntas-mobile {
+    display: none;
+  }
+  #comp_inf_preguntas-lg {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 0 4.6rem;
+  }
+}
+
+#comp_inf_preguntas-lg div {
+  width: 100%;
+}
+
+
+.newsletter {
+  padding: 2.6rem 0;
+}
+.newsletter-container {
+  text-align: left;
+  width: 100%;
+}
+.newsletter-container h2 {
+  font: normal normal bold 2rem/2.6rem Montserrat;
+  letter-spacing: 0.07ch;
+  color: black;
+}
+.newsletter-input {
+  width: 100%;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+}
+.newsletter-input input {
+  width: 60%;
+  height: 2.6rem;
+  border: 1px solid var(--lt-color-white-700);
+  border-radius: 6px;
+  padding: 0 1rem;
+  font: normal normal normal 1rem/1.8rem Montserrat;
+  color: var(--lt-color-black-300);
+}
+.newsletter-input input::placeholder {
+  color: var(--lt-color-black-600);
+  font-weight: lighter;
+}
+.newsletter-input button {
+  width: 30%;
+  height: 2.6rem;
+  border: none;
+  border-radius: 6px;
+  background-color: black;
+  color: #fff;
+  font: normal normal bolder 1.1rem/1.8rem Montserrat;
+  cursor: pointer;
+  margin: 0 0 0 0.6rem;
+}
+.newsletter-claimer {
+  font-size: 0.9rem;
+  color: var(--lt-color-gray-700);
+  margin: 1.5rem 0;
+}
+
+
+._lg-informacion {
+  display: flex;
+}
+._lg-informacion div h3 {
+  font: normal normal normal 1.2rem/1.6rem Montserrat;
+  color: var(--lt-color-black-300);
+  margin: 0.5rem 0;
+}
+._lg-informacion div p {
+  font: normal normal normal 1rem/1.6rem Montserrat;
+  color: var(--lt-color-black-400);
+  margin-left: 0.5rem;
+}
+._lg-informacion div p a {
+  cursor: pointer;
 }

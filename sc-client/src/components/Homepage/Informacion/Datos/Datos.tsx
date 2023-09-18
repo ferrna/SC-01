@@ -10,9 +10,9 @@ export const Datos: FC<DatosProps> = ({}) => {
     <div id="comp_inf_main">
       <div id="comp_inf_main-container">
         <div id="comp_inf_main-txt">
-          <h4>
+          {/* <h4>
             <img src={Logo} alt="Logo" id="comp_foo_logo" />
-          </h4>
+          </h4> */}
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum maiores fuga soluta tenetur saepe
             consectetur nemo voluptatem deleniti similique incidunt laborum amet, dolor velit, ipsam

@@ -13,7 +13,7 @@
 }
 
 #comp_inf_main > * {
-  font: normal normal normal 12px/16px Montserrat;
+  font: normal normal normal 13px/18px Montserrat;
 }
 
 #comp_inf_main-txt,
@@ -37,4 +37,14 @@
 #comp_inf_main-horario .reloj {
   text-transform: uppercase;
   font: normal normal normal 17px/19px Montserrat;
+}
+
+@media (min-width: 992px) {
+  #comp_inf_main {
+    grid-column: span 4;
+    margin-left: -10px;
+  }
+  #comp_inf_main-container {
+    margin: 0;
+  }
 }

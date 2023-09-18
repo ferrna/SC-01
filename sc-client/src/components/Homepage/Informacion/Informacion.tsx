@@ -9,8 +9,8 @@ const Informacion: FC<InformacionProps> = ({}) => {
   return (
     <section id="comp_inf_section">
       <div id="comp_inf_section-container">
-        <Preguntas />
         <Datos />
+        <Preguntas />
       </div>
     </section>
   )

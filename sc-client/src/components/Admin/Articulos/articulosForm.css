@@ -1,16 +1,16 @@
-#articulosCrear {
+#articulosForm {
     width: 100%;
 }
-#articulosCrear * {
+#articulosForm * {
     margin:0;
     text-align:center
 }
-.articulosCrear-container {
+.articulosForm-container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 20%);
 }
-.articulosCrear-container h2 {
+.articulosForm-container h2 {
     grid-column: span 5;
     text-align: center;
 }

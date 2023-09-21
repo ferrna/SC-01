@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Route, Routes, NavLink } from 'react-router-dom';
 import ArticulosAdmin from '../../components/Admin/Articulos/ArticulosAdmin';
 import './admin.styles.css'
+import ArticulosCrear from '../../components/Admin/Articulos/ArticulosCrear';
 
 interface AdminProps {
   
@@ -44,6 +45,7 @@ const Admin: FC<AdminProps> = ({  }) => {
         <Routes>
           <Route path="/" element={<div>Desktop</div>} />
           <Route path="articulos" element={<ArticulosAdmin />} />
+          <Route path="articulos/crear" element={<ArticulosCrear />} />
           <Route path="productos" element={<div>productos</div>} />
         </Routes>
       </div>

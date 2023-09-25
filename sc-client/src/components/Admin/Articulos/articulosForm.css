@@ -1,48 +1,105 @@
-#articulosForm {
+#articleForm {
     width: 100%;
 }
-#articulosForm * {
-    margin:0;
-    text-align:center
+#articleForm * {
+    margin: 0;
+    text-align: center
 }
-.articulosForm-container {
+.articleForm-container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 20%);
 }
-.articulosForm-container h2 {
+.articleForm-container h2 {
     grid-column: span 5;
     text-align: center;
 }
 
-.articulo_componentes {
+.articleForm_leftSection {
     grid-column: span 2;
 }
-.articulo_contenidos {
+.articleForm_rightSection {
     grid-column: 3 / span 3;
 }
 
-.articulo_componentes div {
+.articleForm_leftSection > div {
     display: flex;
     flex-direction: column;
 }
-.articulo_componentes .fecha-y-author {
+.articleForm_leftSection .fecha_Autor {
     flex-direction: row;
 }
-.fecha-y-author span:last-child {
-    padding-left: 20px;
-}
-.articulo_componentes .fecha-y-author span {
+
+.fecha_Autor span {
     display: flex;
     flex-direction: column;
     max-width: 50%;
 }
+.fecha_Autor span:last-child {
+    padding-left: 20px;
+}
 
-.articulo_contenidos .contenido-1 {
+.articleForm_rightSection .content {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
     width: 100%;
-    padding: 0 0.5rem 0 1.5rem
+    min-height: 160px;
+    padding: 0 0.5rem 0 1.5rem;
+    font-size: 13px;
+}
+.articleForm_rightSection .content textarea {
+    min-height: 120px;
+}
+.articleForm_rightSection .content:first-child {
+    min-height: 100px;
+}
+.articleForm_rightSection .content:first-child textarea {
+    min-height: 80px;
+}
 
+.imageInputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 2rem;
+    min-height: 260px;
+}
+.imageInputs > div {
+    border: 1px solid var(--lt-color-gray-400);
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.imageInputs div div {
+    border: 1px dotted var(--lt-color-gray-500);
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--lt-color-gray-200);
+}
+
+.imageInputs-input2.disabled > div{
+    opacity: 0.5;
+}
+.imageInputs-input2.disabled:hover {
+    pointer-events: none;
+}
+
+.buttonMoreContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0.5rem 1rem;
 }

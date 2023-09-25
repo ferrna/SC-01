@@ -1,5 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import './articulosForm.css'
+import { PiFileImageFill, PiPlusCircleLight } from 'react-icons/pi'
 
 interface ArticulosFormProps {}
 
@@ -15,19 +16,25 @@ type ArticulosFormState = {
   body2?: string
 }
 
+const newArticlePropsObj: ArticulosFormState = {
+  title: '',
+  drophead: '',
+  author: '',
+  date: new Date(),
+  image1: '',
+  introduction: '',
+  body: '',
+}
+
 const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
   const [newArticle, setNewArticle] = React.useState<ArticulosFormState>({
-    title: '',
-    drophead: '',
-    author: '',
-    date: new Date(),
-    image1: '',
-    introduction: '',
-    body: '',
+    ...newArticlePropsObj,
   })
 
-  const [showInputContenido2, setShowInputContenido2] = React.useState<boolean>(false)
-  const [showInputImagen2, setShowInputImagen2] = React.useState<boolean>(false)
+  const inputImage1 = useRef(null)
+  const inputImage2 = useRef(null)
+
+  const [showInputContenido2, setShowInputContenido2] = useState<boolean>(false)
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault()
@@ -36,6 +43,7 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
       [e.target.name]: e.target.value,
     })
   }
+
   const onFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     setNewArticle({
@@ -44,58 +52,83 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
     })
   }
 
-  const titleandsub = [
-    { name: 'title', label: 'Título' },
-    { name: 'subtitle', label: 'Subtítulo' },
-  ]
-  const dateandauthor = [
-    { name: 'author', label: 'Autor', type: 'text' },
-    { name: 'date', label: 'Fecha', type: 'date' },
-  ]
-
   return (
-    <div id="articulosForm">
-      <div className="articulosForm-container">
+    <div id="articleForm">
+      <div className="articleForm-container">
         <h2>Creación de un artículo</h2>
-        <section className="articulo_componentes">
-          {titleandsub.map((item, index) => (
-            <div key={index}>
-              <label htmlFor={item.name}>{item.label}</label>
-              <input type="text" name={item.name} id={item.name} onChange={(e) => onInputChange(e)} />
-            </div>
-          ))}
-          <div className="fecha-y-author">
-            {dateandauthor.map((item, index) => (
-              <span key={index}>
-                <label htmlFor={item.name}>{item.label}</label>
-                <input type={item.type} name={item.name} id={item.name} onChange={(e) => onInputChange(e)} />
-              </span>
-            ))}
+        <section className="articleForm_leftSection fs-14">
+          <div>
+            <label htmlFor="title">Titulo</label>
+            <input type="text" name="title" value={newArticle.title} onChange={(e) => onInputChange(e)} />
           </div>
           <div>
-            <label htmlFor="image1">Imagen 1</label>
-            <input type="file" name="image1" onChange={(e) => onFileInput(e)} />
+            <label htmlFor={'drophead'}>Subtitulo</label>
+            <input type="text" name={'drophead'} onChange={(e) => onInputChange(e)} />
           </div>
-          <button onClick={() => setShowInputImagen2(true)}>agregar imagen 2</button>
-          {showInputImagen2 && (
+          <div className="fecha_Autor">
+            <span>
+              <label htmlFor="author">Autor</label>
+              <input type="text" name="author" onChange={(e) => onInputChange(e)} />
+            </span>
+            <span>
+              <label htmlFor={'date'}>Fecha</label>
+              <input type="date" name={'date'} onChange={(e) => onInputChange(e)} />
+            </span>
+          </div>
+          <div className="imageInputs">
             <div>
-              <label htmlFor="image2">Imagen 2</label>
-              <input type="file" name="image2" onChange={(e) => onFileInput(e)} />
+              <input
+                style={{ display: 'none' }}
+                type="file"
+                name="image1"
+                ref={inputImage1}
+                onChange={(e) => onFileInput(e)}
+              />
+              {/* @ts-ignore */}
+              <button onClick={() => inputImage1.current.click()}>
+                <div>
+                  <PiFileImageFill size={30} />
+                  <span className="fs-12">Subir imagen</span>
+                </div>
+              </button>
             </div>
-          )}
+            <div>
+              <input
+                style={{ display: 'none' }}
+                type="file"
+                name="image2"
+                ref={inputImage2}
+                onChange={(e) => onFileInput(e)}
+              />
+              <button
+                // @ts-ignore
+                onClick={() => inputImage2.current.click()}
+                disabled={newArticle.image1.length > 0 ? false : true}
+                className={newArticle.image1.length > 0 ? '' : 'imageInputs-input2 disabled'}
+              >
+                <div>
+                  <PiFileImageFill size={30} />
+                  <span className="fs-12">Subir imagen</span>
+                </div>
+              </button>
+            </div>
+          </div>
         </section>
-        <section className="articulo_contenidos">
-          <div className="contenido-1">
+        <section className="articleForm_rightSection">
+          <div className="content">
             <label htmlFor="introduction">Introduccion</label>
             <textarea name="introduction" onChange={(e) => onInputChange(e)} />
           </div>
-          <div className="contenido-1">
+          <div className="content">
             <label htmlFor="body">Contenido 1</label>
             <textarea name="body" onChange={(e) => onInputChange(e)} />
           </div>
-          <button onClick={() => setShowInputContenido2(true)}>agregar contenido</button>
+          <button onClick={() => setShowInputContenido2(true)} className="buttonMoreContent">
+            <span className="fs-12">Agregar contenido 2</span>
+            <PiPlusCircleLight size={25} />
+          </button>
           {showInputContenido2 && (
-            <div className="contenido-1">
+            <div className="content">
               <label htmlFor="body2">Contenido 2</label>
               <textarea name="body2" onChange={(e) => onInputChange(e)} />
             </div>

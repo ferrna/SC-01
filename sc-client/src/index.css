@@ -108,3 +108,49 @@ input {
 .fs-16 {
   font-size: 16px;
 }
+
+.mw-100 {
+  min-width: 100px;
+}
+.mw-120 {
+  min-width: 120px;
+}
+.mw-160 {
+  min-width: 160px;
+}
+.mw-200 {
+  min-width: 200px;
+}
+.mw-240 {
+  min-width: 240px;
+}
+.mw-300 {
+  min-width: 300px;
+}
+.mw-320 {
+  min-width: 320px;
+}
+.w-max-100 {
+  max-width: 100px;
+}
+.w-max-120 {
+  max-width: 120px;
+}
+.w-max-160 {
+  max-width: 160px;
+}
+.w-max-200 {
+  max-width: 200px;
+}
+.w-total {
+  width: 100%;
+}
+.m-0 {
+  margin: 0;
+}
+
+.d-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

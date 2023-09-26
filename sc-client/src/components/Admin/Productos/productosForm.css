@@ -1,50 +1,38 @@
-#articleForm {
+#productForm {
     width: 100%;
 }
-#articleForm * {
+#productForm * {
     margin: 0;
     text-align: center
 }
-.articleForm-container {
+.productForm-container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 20%);
 }
-.articleForm-title {
+.productForm-title {
     grid-column: span 5;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.articleForm-title > span {
+.productForm-title > span {
     width: 160px
 }
 
-.articleForm_leftSection {
+.productForm_leftSection {
     grid-column: span 2;
 }
-.articleForm_rightSection {
+.productForm_rightSection {
     grid-column: 3 / span 3;
 }
 
-.articleForm_leftSection > div {
+.productForm_leftSection > div {
     display: flex;
     flex-direction: column;
 }
-.articleForm_leftSection .fecha_Autor {
-    flex-direction: row;
-}
 
-.fecha_Autor span {
-    display: flex;
-    flex-direction: column;
-    max-width: 50%;
-}
-.fecha_Autor span:last-child {
-    padding-left: 20px;
-}
-
-.articleForm_rightSection .content {
+.productForm_rightSection .content {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
@@ -53,17 +41,11 @@
     padding: 0 0.5rem 0 1.5rem;
     font-size: 13px;
 }
-.articleForm_rightSection .content textarea {
+.productForm_rightSection .content textarea {
     min-height: 120px;
 }
-.articleForm_rightSection .content:first-child {
-    min-height: 100px;
-}
-.articleForm_rightSection .content:first-child textarea {
-    min-height: 80px;
-}
 
-.imageInputs {
+.imageInput-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,17 +54,19 @@
     padding-top: 2rem;
     min-height: 260px;
 }
-.imageInputs > div {
+.imageInput-container > div {
     border: 1px solid var(--lt-color-gray-400);
     border-radius: 5px;
-    padding: 0.5rem;
     width: 100%;
+}
+.imageInput-inputDiv {
+    padding: 0.5rem;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
-.imageInputs div div {
+.imageInput-inputDiv div {
     border: 1px dotted var(--lt-color-gray-500);
     border-radius: 5px;
     padding: 0.5rem;
@@ -93,18 +77,8 @@
     justify-content: space-evenly;
     background-color: var(--lt-color-gray-200);
 }
-
-.imageInputs-input2.disabled > div{
-    opacity: 0.5;
-}
-.imageInputs-input2.disabled:hover {
-    pointer-events: none;
-}
-
-.buttonMoreContent {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+#imageInput-imageDiv {
     width: 100%;
-    padding: 0.5rem 1rem;
+    min-height: 200px;
+    margin-top: 1rem;
 }

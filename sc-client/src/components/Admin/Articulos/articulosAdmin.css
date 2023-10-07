@@ -35,8 +35,7 @@
 .articlesAdmin-table_item > div:last-child {
     border-right: none;
 }
-.articlesAdmin-table_item_title {
-    max-width: 300px;
+.articlesAdmin-table_item_ellipsis {
     text-overflow: ellipsis;
     display: block;
     white-space: nowrap;

@@ -121,6 +121,9 @@ input {
 .mw-200 {
   min-width: 200px;
 }
+.mw-220 {
+  min-width: 220px;
+}
 .mw-240 {
   min-width: 240px;
 }
@@ -141,6 +144,12 @@ input {
 }
 .w-max-200 {
   max-width: 200px;
+}
+.w-max-220 {
+  max-width: 220px;
+}
+.w-max-240 {
+  max-width: 240px;
 }
 .w-total {
   width: 100%;

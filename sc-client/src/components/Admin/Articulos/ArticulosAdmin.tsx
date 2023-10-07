@@ -1,40 +1,57 @@
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import './articulosAdmin.css'
-import { articlesMock } from './mockArticles'
 import { VscEdit } from 'react-icons/vsc'
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
+import { fetchAllArticles } from './helpers'
+import { ArticleForm } from './interfaces'
 
 interface ArticulosAdminProps {}
 
 const ArticulosAdmin: FC<ArticulosAdminProps> = ({}) => {
+  const [articlesFetched, setArticlesFetched] = useState<ArticleForm[]>([])
+
+  useEffect(() => {
+    if (true) {
+      fetchAllArticles()
+        .then((articles) => {
+          console.dir(articles)
+          if (articles) {
+            setArticlesFetched([...articles])
+          }
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [])
+
   return (
     <div id="articlesAdmin">
       <div className="articlesAdmin-container">
         <div className="articlesAdmin-table">
           <div className="articlesAdmin-table_item">
-            <div className="articlesAdmin-table_item_title mw-200">Titulo</div>
-            <div className="articlesAdmin-table_item_title mw-240">Subtitulo</div>
-            <div className="articlesAdmin-table_item_date">Fecha</div>
-            <div className="articlesAdmin-table_item_date">Autor</div>
-            <div className="articlesAdmin-table_item_edit">Editar</div>
+            <div className="mw-240">Titulo</div>
+            <div className="mw-220">Subtitulo</div>
+            <div className="">Fecha</div>
+            <div className="">Autor</div>
+            <div className="">Editar</div>
           </div>
-          {articlesMock.articles.map((article) => (
-            <div className="articlesAdmin-table_item fs-14">
-              <div className="articlesAdmin-table_item_title fs-14">{article.title}</div>
-              <div className="articlesAdmin-table_item_title fs-14">{article.drophead}</div>
-              <div className="articlesAdmin-table_item_date">{article.date.toUTCString().slice(0, -7)}</div>
-              <div className="articlesAdmin-table_item_date">{article.author}</div>
-              <div className="articlesAdmin-table_item_edit w-max-100">
-                <button>
-                  <Link to={`/admin/articulos/crear?id=${article.id}`}>
-                    <VscEdit />
-                    &nbsp; Editar
-                  </Link>
-                </button>
+          {articlesFetched?.length > 0 &&
+            articlesFetched.map((article) => (
+              <div className="articlesAdmin-table_item fs-14">
+                <div className="articlesAdmin-table_item_ellipsis w-max-240">{article.title}</div>
+                <div className="articlesAdmin-table_item_ellipsis w-max-220">{article.drophead}</div>
+                <div className="w-max-160">{article.createdAt.toUTCString().slice(5, -13)}</div>
+                <div className="articlesAdmin-table_item_ellipsis w-max-160 fs-12">{article.author}</div>
+                <div className="w-max-100">
+                  <button>
+                    <Link to={`/admin/articulos/crear?id=${article.id}`}>
+                      <VscEdit />
+                      &nbsp; Editar
+                    </Link>
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
           <div className="articlesAdmin-table_pageButtons fs-14">
             <div className="articlesAdmin-table_pageButtons-container">
               <button>

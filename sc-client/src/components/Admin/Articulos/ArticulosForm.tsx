@@ -12,8 +12,8 @@ type ArticleForm = {
   title: string
   drophead: string
   author: string
-  date: Date
-  image1: string
+  createdAt: Date
+  image: string
   image2?: string
   introduction?: string
   body: string
@@ -24,8 +24,8 @@ const newArticlePropsObj: ArticleForm = {
   title: '',
   drophead: '',
   author: '',
-  date: new Date(),
-  image1: '',
+  createdAt: new Date(),
+  image: '',
   introduction: '',
   body: '',
 }
@@ -42,20 +42,35 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
     return React.useMemo(() => new URLSearchParams(search), [search])
   }
 
+  const fetchArticle = async (id: string) => {
+    const response = await fetch(`http://localhost:3001/articles/${id}`)
+    const data = await response.json()
+    console.dir(data)
+    return data
+  }
+
   useEffect(() => {
     console.log(id)
     if (id) {
-      const article = articlesMock.articles.find((article) => article.id === id)
-      if (article) {
-        setNewArticle({
-          ...article,
+      //const article = articlesMock.articles.find((article) => article.id === id)
+      fetchArticle(id)
+        .then(({ article }) => {
+          console.dir(article)
+          if (article) {
+            setNewArticle({
+              ...article,
+              createdAt: new Date(article.createdAt),
+              image: article.image || '',
+            })
+          }
         })
-      }
+        .catch((err) => console.log(err))
     }
   }, [])
 
-  const inputImage1 = useRef(null)
+  const inputImage = useRef(null)
   const inputImage2 = useRef(null)
+  const formElement = useRef(null)
 
   const [showInputContenido2, setShowInputContenido2] = useState<boolean>(false)
 
@@ -75,18 +90,69 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
     })
   }
 
-  const dateFormatforInput = (date: Date) => {
+  const dateFormatforInput = (createdAt: Date) => {
     return (
-      date.getFullYear().toString().padStart(4, '0') +
+      createdAt.getFullYear().toString().padStart(4, '0') +
       '-' +
-      (date.getMonth() + 1).toString().padStart(2, '0') +
+      (createdAt.getMonth() + 1).toString().padStart(2, '0') +
       '-' +
-      date.getDate().toString().padStart(2, '0')
+      createdAt.getDate().toString().padStart(2, '0')
     )
+  }
+
+  const handleDelete = async () => {
+    const response = await fetch(`http://localhost:3001/articles/${id}`, {
+      method: 'DELETE',
+    })
+    const data = await response.json()
+    console.log(data)
+  }
+
+  const handleFormSubmit = async () => {
+    console.dir(newArticle)
+    const data = { ...newArticle }
+    const formData = new FormData()
+    for (let key in data) {
+      formData.append(key, data[key])
+    }
+    /* 
+    const formData = formElement.current || new HTMLFormElement()
+    for (let key in data) {
+      formData.append(key, data[key])
+    }
+    const data = new URLSearchParams()
+    data.append('image', newArticle.image)
+    for (const pair of formData) {
+      if (pair[0] !== 'image') {
+        data.append(pair[0], pair[1])
+      }
+    } */
+    fetch(`http://localhost:3001/articles/${data.id}`, {
+      method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      body: formData,
+      /* headers: {
+        'content-type': 'multipart/form-data',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      }, */
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer',
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response)
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response)
+      })
   }
 
   return (
     <div id="articleForm">
+      <form action="" ref={formElement}></form>
       <div className="articleForm-container">
         <div className="articleForm-title">
           {id && <span className="fs-12">Editando el artículo {id}</span>}
@@ -120,11 +186,11 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
               <input type="text" name="author" value={newArticle.author} onChange={(e) => onInputChange(e)} />
             </span>
             <span>
-              <label htmlFor={'date'}>Fecha</label>
+              <label htmlFor={'createdAt'}>Fecha</label>
               <input
                 type="date"
-                name={'date'}
-                value={dateFormatforInput(newArticle.date)}
+                name={'createdAt'}
+                value={dateFormatforInput(newArticle.createdAt)}
                 onChange={(e) => onInputChange(e)}
               />
             </span>
@@ -134,12 +200,12 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
               <input
                 style={{ display: 'none' }}
                 type="file"
-                name="image1"
-                ref={inputImage1}
+                name="image"
+                ref={inputImage}
                 onChange={(e) => onFileInput(e)}
               />
               {/* @ts-ignore */}
-              <button onClick={() => inputImage1.current.click()}>
+              <button onClick={() => inputImage.current.click()}>
                 <div>
                   <PiFileImageFill size={30} />
                   <span className="fs-12">Subir imagen</span>
@@ -157,8 +223,8 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
               <button
                 // @ts-ignore
                 onClick={() => inputImage2.current.click()}
-                disabled={newArticle.image1.length > 0 ? false : true}
-                className={newArticle.image1.length > 0 ? '' : 'imageInputs-input2 disabled'}
+                disabled={newArticle.image?.length > 0 ? false : true}
+                className={newArticle.image?.length > 0 ? '' : 'imageInputs-input2 disabled'}
               >
                 <div>
                   <PiFileImageFill size={30} />
@@ -188,6 +254,8 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
             </div>
           )}
         </section>
+        <button onClick={handleFormSubmit}>{id ? 'Guardar cambios' : 'Crear'}</button>
+        <button onClick={handleDelete}>{'Delete'}</button>
       </div>
     </div>
   )

@@ -1,22 +1,21 @@
-export const fetchAllArticles = async () => {
-  const response = await fetch(`http://localhost:3001/articles`)
+export const fetchAllProducts = async () => {
+  const response = await fetch(`http://localhost:3001/products`)
   const data = await response.json()
   data &&
-    data.forEach((article) => {
-      article.createdAt = new Date(article.createdAt)
+    data.forEach((product) => {
+      product.createdAt = new Date(product.createdAt)
     })
   return data
 }
 
-export const fetchArticle = async (id: string) => {
-  const response = await fetch(`http://localhost:3001/articles/${id}`)
+export const fetchProduct = async (id: string) => {
+  const response = await fetch(`http://localhost:3001/products/${id}`)
   const data = await response.json()
-  console.dir(data)
   return data
 }
 
-export const handleDeleteArticle = async (id: string) => {
-  const response = await fetch(`http://localhost:3001/articles/${id}`, {
+export const handleDeleteProduct = async (id: string) => {
+  const response = await fetch(`http://localhost:3001/products/${id}`, {
     method: 'DELETE',
   })
   const data = await response.json()
@@ -24,9 +23,9 @@ export const handleDeleteArticle = async (id: string) => {
   return data
 }
 
-export const handleFormSubmit = async (newArticle) => {
-  console.dir(newArticle)
-  const data = { ...newArticle }
+export const handleFormSubmit = async (newProduct) => {
+  console.dir(newProduct)
+  const data = { ...newProduct }
   const formData = new FormData()
   for (let key in data) {
     formData.append(key, data[key])
@@ -43,7 +42,8 @@ export const handleFormSubmit = async (newArticle) => {
         data.append(pair[0], pair[1])
       }
     } */
-  fetch(`http://localhost:3001/articles/${data.id}`, {
+  console.dir(data)
+  fetch(`http://localhost:3001/products/${data.id}`, {
     method: 'PUT', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

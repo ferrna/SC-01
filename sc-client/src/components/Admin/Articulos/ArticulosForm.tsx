@@ -1,11 +1,11 @@
 import React, { FC, useState, useEffect } from 'react'
 import './articulosForm.css'
 import { PiPlusCircleLight } from 'react-icons/pi'
-import { useLocation } from 'react-router-dom'
-import { fetchArticle, handleDeleteArticle, handleFormSubmit, dateFormatforInput } from './helpers'
+import { fetchArticle, handleDeleteArticle, handleFormSubmit } from './helpers'
 import { ArticleForm } from './interfaces'
 import ImageInputs from './ImageInputs'
-//import { RiDeleteBin6Line } from 'react-icons/ri'
+import { dateFormatforInput, useQuery } from '../../../utils/functions'
+import { useLocation } from 'react-router-dom'
 
 interface ArticulosFormProps {}
 
@@ -20,16 +20,12 @@ const newArticlePropsObj: ArticleForm = {
 }
 
 const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
-  const query = useQuery()
-  const id = query.get('id')
+  const location: string = useLocation().search
+  const id = useQuery(location).get('id')
+
   const [newArticle, setNewArticle] = useState<ArticleForm>({
     ...newArticlePropsObj,
   })
-
-  function useQuery() {
-    const { search } = useLocation()
-    return React.useMemo(() => new URLSearchParams(search), [search])
-  }
 
   useEffect(() => {
     if (id) {
@@ -125,3 +121,6 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
 }
 
 export default ArticulosForm
+
+// TODO:
+// - [ ] Route and ArticulosForm.tsx only handle one image upload per creation/editing (request)

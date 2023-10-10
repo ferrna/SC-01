@@ -8,7 +8,7 @@ import { ArticleForm } from './interfaces'
 
 interface ArticulosAdminProps {}
 
-const ArticulosAdmin: FC<ArticulosAdminProps> = ({}) => {
+const ArticulosAdmin: FC<ArticulosAdminProps> = () => {
   const [articlesFetched, setArticlesFetched] = useState<ArticleForm[]>([])
 
   useEffect(() => {

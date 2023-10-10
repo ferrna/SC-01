@@ -5,15 +5,22 @@ import { PiFileImageFill } from 'react-icons/pi'
 interface ImageInputsProps {
   formState: any
   setFormState: any
-  idImgPreview_0: string
   secondInput?: boolean
+  imagePreviewDivIDPrefix: string // string for genering an unique div id in case theres more
+  // than one 'ImageInputs' component in a single view.
+  // E.g. 'productosForm' => ID = 'productosForm-image-preview-div-'
 }
 
-const ImageInputs: FC<ImageInputsProps> = ({ formState, setFormState, idImgPreview_0, secondInput }) => {
-  // idImgPreview_0: string of the n°0 input's image preview div element
-  // (+= '' | '2')
-  const inputImage = useRef(null)
-  const inputImage2 = useRef(null)
+const ImageInputs: FC<ImageInputsProps> = ({
+  formState,
+  setFormState,
+  secondInput,
+  imagePreviewDivIDPrefix,
+}) => {
+  const previewDivIDBase = imagePreviewDivIDPrefix + '-image-preview-div-'
+
+  const inputImage = useRef<HTMLInputElement | null>(null)
+  const inputImage2 = useRef<HTMLInputElement | null>(null)
 
   const onFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -21,23 +28,24 @@ const ImageInputs: FC<ImageInputsProps> = ({ formState, setFormState, idImgPrevi
       ...formState,
       [e.target.name]: e.target.files ? e.target.files[0] : '',
     })
-    e.target.files && getImgDataFromInput(e.target.files[0], idImgPreview_0)
+    e.target.files && getImgDataFromInput(e.target.files[0], e.target.name)
   }
 
-  function getImgDataFromInput(targetsFile: any, idImgPreview_0: string) {
+  function getImgDataFromInput(targetsFile: any, targetName: string) {
+    const index = targetName === 'image' ? 1 : 2
+    const elementId = index === 1 ? previewDivIDBase + '1' : previewDivIDBase + '2'
     const { file = null } = { file: targetsFile }
     if (file) {
       const fileReader = new FileReader()
       fileReader.readAsDataURL(file)
       fileReader.addEventListener('load', function () {
         // convert image file to base64 string
-        // todo: logic for a second image preview: (+ parameter for identifing the input element)
-        let imagePreview = document.getElementById(idImgPreview_0 + '_disabled')
+        let imagePreview = document.getElementById(elementId + '_none')
         if (imagePreview) {
-          imagePreview.id = idImgPreview_0
+          imagePreview.id = elementId
           imagePreview.innerHTML = '<img src="' + this.result + '" />'
         } else {
-          imagePreview = document.getElementById(idImgPreview_0)
+          imagePreview = document.getElementById(elementId)
           if (imagePreview) imagePreview.innerHTML = '<img src="' + this.result + '" />'
         }
       })
@@ -55,15 +63,14 @@ const ImageInputs: FC<ImageInputsProps> = ({ formState, setFormState, idImgPrevi
           ref={inputImage}
           onChange={(e) => onFileInput(e)}
         />
-        {/* @ts-ignore */}
         <button onClick={() => inputImage.current?.click()}>
           <div>
             <PiFileImageFill size={30} />
             <span className="fs-12">Subir imagen</span>
           </div>
         </button>
-        <div id={formState.image?.length > 0 ? idImgPreview_0 : idImgPreview_0 + '_disabled'}>
-          <img src={formState.image} alt="image-1" />
+        <div id={formState.image?.length > 0 ? previewDivIDBase + '1' : previewDivIDBase + '1_none'}>
+          <img src={formState.image} alt="preview" />
         </div>
       </div>
       {secondInput && secondInput === true && (
@@ -77,10 +84,9 @@ const ImageInputs: FC<ImageInputsProps> = ({ formState, setFormState, idImgPrevi
             onChange={(e) => onFileInput(e)}
           />
           <button
-            // @ts-ignore
             onClick={() => inputImage2.current?.click()}
             disabled={formState.image?.length > 0 ? false : true}
-            id={formState.image?.length > 0 ? idImgPreview_0 + '2' : idImgPreview_0 + '2_disabled'}
+            id={formState.image?.length > 0 ? previewDivIDBase + '2' : previewDivIDBase + '2_none'}
           >
             <div>
               <PiFileImageFill size={30} />
@@ -91,12 +97,12 @@ const ImageInputs: FC<ImageInputsProps> = ({ formState, setFormState, idImgPrevi
             id={
               formState.image2
                 ? formState.image2.length > 0
-                  ? idImgPreview_0 + '2'
-                  : idImgPreview_0 + '2_disabled'
-                : idImgPreview_0 + '2_disabled'
+                  ? previewDivIDBase + '2'
+                  : previewDivIDBase + '2_none'
+                : previewDivIDBase + '2_none'
             }
           >
-            {/* <img src={formState.image2} alt="image-2" /> */}
+            {formState.image2 && <img src={formState.image2} alt="preview" />}
           </div>
         </div>
       )}

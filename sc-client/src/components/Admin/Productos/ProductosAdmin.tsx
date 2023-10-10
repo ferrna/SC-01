@@ -9,7 +9,7 @@ import { fetchAllProducts } from './helpers'
 
 interface ProductosAdminProps {}
 
-const ProductosAdmin: FC<ProductosAdminProps> = ({}) => {
+const ProductosAdmin: FC<ProductosAdminProps> = () => {
   const [productsFetched, setProductsFetched] = useState<ProductType[]>([])
 
   useEffect(() => {

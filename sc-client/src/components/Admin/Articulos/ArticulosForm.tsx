@@ -3,9 +3,9 @@ import './articulosForm.css'
 import { PiPlusCircleLight } from 'react-icons/pi'
 import { fetchArticle, handleDeleteArticle, handleFormSubmit } from './helpers'
 import { ArticleForm } from './interfaces'
-import ImageInputs from './ImageInputs'
 import { dateFormatforInput, useQuery } from '../../../utils/functions'
 import { useLocation } from 'react-router-dom'
+import ImageInputs from '../../ui/inputs/ImageInputs'
 
 interface ArticulosFormProps {}
 
@@ -19,7 +19,7 @@ const newArticlePropsObj: ArticleForm = {
   body: '',
 }
 
-const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
+const ArticulosForm: FC<ArticulosFormProps> = () => {
   const location: string = useLocation().search
   const id = useQuery(location).get('id')
 
@@ -42,7 +42,7 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
         })
         .catch((err) => console.log(err))
     }
-  }, [])
+  }, [id])
 
   const [showInputContenido2, setShowInputContenido2] = useState<boolean>(false)
 
@@ -91,7 +91,12 @@ const ArticulosForm: FC<ArticulosFormProps> = ({}) => {
               />
             </span>
           </div>
-          <ImageInputs newArticle={newArticle} setNewArticle={setNewArticle} />
+          <ImageInputs
+            formState={newArticle}
+            setFormState={setNewArticle}
+            imagePreviewDivIDPrefix="articulosForm"
+            secondInput={true}
+          />
         </section>
         <section className="articleForm_rightSection">
           <div className="content">

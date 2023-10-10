@@ -2,9 +2,9 @@ import React, { FC, useState, useEffect } from 'react'
 import './productosForm.css'
 import { ProductType } from './interfaces'
 import { dateFormatforInput, useQuery } from '../../../utils/functions'
-import ImageInputs from './ImageInputs'
 import { fetchProduct, handleDeleteProduct, handleFormSubmit } from './helpers'
 import { useLocation } from 'react-router-dom'
+import ImageInputs from '../../ui/inputs/ImageInputs'
 
 interface ProductosFormProps {}
 
@@ -17,7 +17,7 @@ const newProductPropsObj: ProductType = {
   articles: [],
 }
 
-const ProductosForm: FC<ProductosFormProps> = ({}) => {
+const ProductosForm: FC<ProductosFormProps> = () => {
   const location: string = useLocation().search
   const id = useQuery(location).get('id')
 
@@ -40,7 +40,7 @@ const ProductosForm: FC<ProductosFormProps> = ({}) => {
         })
         .catch((err) => console.log(err))
     }
-  }, [])
+  }, [id])
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault()
@@ -78,7 +78,7 @@ const ProductosForm: FC<ProductosFormProps> = ({}) => {
           <ImageInputs
             formState={newProduct}
             setFormState={setNewProduct}
-            idImgPreview_0="productosFormImgPreview"
+            imagePreviewDivIDPrefix="productosForm"
           />
         </section>
         <section className="productForm_rightSection">

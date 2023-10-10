@@ -29,21 +29,20 @@
     background-color: var(--lt-color-gray-200);
 }
 
-#imageInputs-input2_disabled > div{
-    opacity: 0.5;
-}
-#imageInputs-input2_disabled:hover {
-    pointer-events: none;
+div[id*='image-preview-div'][id$='_none'] {
+    display: none;
 }
 
-#articleFormImagePreview1_disabled {
-    display: none
-}
-#articleFormImagePreview2_disabled {
-    display: none
-}
-#articleFormImagePreview1 {
+div[id*='image-preview-div'][id$='1'],
+div[id*='image-preview-div'][id$='2'] {
     object-fit: contain;
     max-width: 70%;
     overflow: hidden;
+}
+
+div[id*='image-preview-div'][id$='2_none'] > div {
+    opacity: 0.5;
+}
+div[id*='image-preview-div'][id$='2_none']:hover {
+    pointer-events: none;
 }

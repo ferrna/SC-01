@@ -3,9 +3,11 @@ import './articulosForm.css'
 import { PiPlusCircleLight } from 'react-icons/pi'
 import { fetchArticle, handleDeleteArticle, handleFormSubmit } from './helpers'
 import { ArticleForm } from './interfaces'
-import { dateFormatforInput, useQuery } from '../../../utils/functions'
-import { useLocation } from 'react-router-dom'
+import { dateFormatforInput } from '../../../utils/functions'
+import { useLocation, useNavigate } from 'react-router-dom'
 import ImageInputs from '../../ui/inputs/ImageInputs'
+import { useQuery } from '../../../custom-hooks'
+import Loader from '../../ui/Loader'
 
 interface ArticulosFormProps {}
 
@@ -26,21 +28,24 @@ const ArticulosForm: FC<ArticulosFormProps> = () => {
   const [newArticle, setNewArticle] = useState<ArticleForm>({
     ...newArticlePropsObj,
   })
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     if (id) {
       fetchArticle(id)
         .then(({ article }) => {
-          console.dir(article)
           if (article) {
             setNewArticle({
               ...article,
               createdAt: new Date(article.createdAt),
               image: article.image || '',
             })
+            setLoaded(true)
           }
         })
         .catch((err) => console.log(err))
+    } else {
+      setLoaded(true)
     }
   }, [id])
 
@@ -52,6 +57,13 @@ const ArticulosForm: FC<ArticulosFormProps> = () => {
       ...newArticle,
       [e.target.name]: e.target.value,
     })
+  }
+
+  const navigate = useNavigate()
+
+  const formSubmitAndNavigate = async () => {
+    await handleFormSubmit(newArticle)
+    navigate(`/admin/articulos`, { replace: true })
   }
 
   return (
@@ -118,9 +130,10 @@ const ArticulosForm: FC<ArticulosFormProps> = () => {
             </div>
           )}
         </section>
-        <button onClick={handleFormSubmit}>{id ? 'Guardar cambios' : 'Crear'}</button>
+        <button onClick={formSubmitAndNavigate}>{id ? 'Guardar cambios' : 'Crear'}</button>
         <button onClick={() => id && handleDeleteArticle(id)}>{'Delete'}</button>
       </div>
+      {!loaded && <Loader />}
     </div>
   )
 }
@@ -128,4 +141,4 @@ const ArticulosForm: FC<ArticulosFormProps> = () => {
 export default ArticulosForm
 
 // TODO:
-// - [ ] Route and ArticulosForm.tsx only handle one image upload per creation/editing (request)
+// - Only one image is being handled per transaction

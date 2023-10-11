@@ -72,5 +72,4 @@ export default Admin
 
 //TODO:
 // - [ ] Add a "loading" state to ArticulosAdmin.tsx
-// - [ ] Add a "loading" state to ArticulosForm.tsx
-// - [ ] Creation and editing's routes should be the same
+// - [ ] Creation and editing's routes should be the same?

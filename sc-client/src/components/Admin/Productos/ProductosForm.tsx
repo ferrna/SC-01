@@ -1,10 +1,12 @@
 import React, { FC, useState, useEffect } from 'react'
 import './productosForm.css'
 import { ProductType } from './interfaces'
-import { dateFormatforInput, useQuery } from '../../../utils/functions'
+import { dateFormatforInput } from '../../../utils/functions'
 import { fetchProduct, handleDeleteProduct, handleFormSubmit } from './helpers'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import ImageInputs from '../../ui/inputs/ImageInputs'
+import { useQuery } from '../../../custom-hooks'
+import Loader from '../../ui/Loader'
 
 interface ProductosFormProps {}
 
@@ -24,21 +26,24 @@ const ProductosForm: FC<ProductosFormProps> = () => {
   const [newProduct, setNewProduct] = useState<ProductType>({
     ...newProductPropsObj,
   })
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     if (id) {
       fetchProduct(id)
         .then(({ product }) => {
-          console.dir(product)
           if (product) {
             setNewProduct({
               ...product,
               createdAt: new Date(product.createdAt),
               image: product.image || '',
             })
+            setLoaded(true)
           }
         })
         .catch((err) => console.log(err))
+    } else {
+      setLoaded(true)
     }
   }, [id])
 
@@ -48,6 +53,13 @@ const ProductosForm: FC<ProductosFormProps> = () => {
       ...newProduct,
       [e.target.name]: e.target.value,
     })
+  }
+
+  const navigate = useNavigate()
+
+  const formSubmitAndNavigate = async () => {
+    await handleFormSubmit(newProduct)
+    navigate(`/admin/productos`, { replace: true })
   }
 
   return (
@@ -91,9 +103,10 @@ const ProductosForm: FC<ProductosFormProps> = () => {
             <textarea name="categories" value={newProduct.categories} onChange={(e) => onInputChange(e)} />
           </div>
         </section>
-        <button onClick={(e) => handleFormSubmit(newProduct)}>{id ? 'Guardar cambios' : 'Crear'}</button>
+        <button onClick={(e) => formSubmitAndNavigate()}>{id ? 'Guardar cambios' : 'Crear'}</button>
         <button onClick={() => id && handleDeleteProduct(id)}>{'Delete'}</button>
       </div>
+      {!loaded && <Loader />}
     </div>
   )
 }

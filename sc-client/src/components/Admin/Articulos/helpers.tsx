@@ -1,3 +1,5 @@
+import { ConfirmAlert } from '../../ui/Alerts'
+
 export const fetchAllArticles = async () => {
   const response = await fetch(`http://localhost:3001/articles`)
   const data = await response.json()
@@ -16,12 +18,18 @@ export const fetchArticle = async (id: string) => {
 }
 
 export const handleDeleteArticle = async (id: string) => {
-  const response = await fetch(`http://localhost:3001/articles/${id}`, {
-    method: 'DELETE',
+  ConfirmAlert({
+    text: 'esta por eliminar este articulo, ¿Desea continuar?',
+    onConfirm: async () => {
+      const response = await fetch(`http://localhost:3001/articles/${id}`, {
+        method: 'DELETE',
+      })
+      const data = await response.json()
+      console.log(data)
+      window.location.reload()
+      return data
+    },
   })
-  const data = await response.json()
-  console.log(data)
-  return data
 }
 
 export const handleFormSubmit = async (newArticle) => {
@@ -58,9 +66,11 @@ export const handleFormSubmit = async (newArticle) => {
     .then(function (response) {
       //handle success
       console.log(response)
+      return response
     })
     .catch(function (response) {
       //handle error
       console.log(response)
+      return response
     })
 }

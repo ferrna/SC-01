@@ -5,19 +5,21 @@ import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 import { fetchAllArticles } from './helpers'
 import { ArticleForm } from './interfaces'
+import Loader from '../../ui/Loader'
 
 interface ArticulosAdminProps {}
 
 const ArticulosAdmin: FC<ArticulosAdminProps> = () => {
   const [articlesFetched, setArticlesFetched] = useState<ArticleForm[]>([])
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     if (true) {
       fetchAllArticles()
         .then((articles) => {
-          console.dir(articles)
           if (articles) {
             setArticlesFetched([...articles])
+            setLoaded(true)
           }
         })
         .catch((err) => console.log(err))
@@ -67,6 +69,7 @@ const ArticulosAdmin: FC<ArticulosAdminProps> = () => {
           </div>
         </div>
       </div>
+      {!loaded && <Loader />}
     </div>
   )
 }

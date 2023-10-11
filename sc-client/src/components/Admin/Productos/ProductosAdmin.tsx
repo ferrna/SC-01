@@ -1,24 +1,25 @@
 import React, { FC, useEffect, useState } from 'react'
 import './productosAdmin.css'
-import { productsMock } from './mockProducts'
 import { VscEdit } from 'react-icons/vsc'
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 import { ProductType } from './interfaces'
 import { fetchAllProducts } from './helpers'
+import Loader from '../../ui/Loader'
 
 interface ProductosAdminProps {}
 
 const ProductosAdmin: FC<ProductosAdminProps> = () => {
   const [productsFetched, setProductsFetched] = useState<ProductType[]>([])
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     if (true) {
       fetchAllProducts()
         .then((products) => {
-          console.dir(products)
           if (products) {
             setProductsFetched([...products])
+            setLoaded(true)
           }
         })
         .catch((err) => console.log(err))
@@ -96,6 +97,7 @@ const ProductosAdmin: FC<ProductosAdminProps> = () => {
           </div>
         </div>
       </div>
+      {!loaded && <Loader />}
     </div>
   )
 }

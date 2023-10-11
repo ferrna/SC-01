@@ -1,3 +1,6 @@
+import { ConfirmAlert } from '../../ui/Alerts'
+import { redirect } from 'react-router-dom'
+
 export const fetchAllProducts = async () => {
   const response = await fetch(`http://localhost:3001/products`)
   const data = await response.json()
@@ -15,12 +18,18 @@ export const fetchProduct = async (id: string) => {
 }
 
 export const handleDeleteProduct = async (id: string) => {
-  const response = await fetch(`http://localhost:3001/products/${id}`, {
-    method: 'DELETE',
+  ConfirmAlert({
+    text: 'esta por eliminar este producto, ¿Desea continuar?',
+    onConfirm: async () => {
+      const response = await fetch(`http://localhost:3001/products/${id}`, {
+        method: 'DELETE',
+      })
+      const data = await response.json()
+      console.log(data)
+      window.location.reload()
+      return data
+    },
   })
-  const data = await response.json()
-  console.log(data)
-  return data
 }
 
 export const handleFormSubmit = async (newProduct) => {
@@ -58,9 +67,11 @@ export const handleFormSubmit = async (newProduct) => {
     .then(function (response) {
       //handle success
       console.log(response)
+      return response
     })
     .catch(function (response) {
       //handle error
       console.log(response)
+      return response
     })
 }

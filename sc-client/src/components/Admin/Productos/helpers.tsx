@@ -32,7 +32,7 @@ export const handleDeleteProduct = async (id: string) => {
   })
 }
 
-export const handleFormSubmit = async (newProduct) => {
+export const handleFormSubmit = async (newProduct, id: string | null) => {
   console.dir(newProduct)
   const data = { ...newProduct }
   const formData = new FormData()
@@ -51,9 +51,10 @@ export const handleFormSubmit = async (newProduct) => {
         data.append(pair[0], pair[1])
       }
     } */
-  console.dir(data)
-  fetch(`http://localhost:3001/products/${data.id}`, {
-    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+  const method = id ? 'PUT' : 'POST'
+  const url = id ? `http://localhost:3001/products/${id}` : `http://localhost:3001/products`
+  fetch(`${url}`, {
+    method: method, // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     credentials: 'same-origin', // include, *same-origin, omit

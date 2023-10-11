@@ -13,7 +13,6 @@ export const fetchAllArticles = async () => {
 export const fetchArticle = async (id: string) => {
   const response = await fetch(`http://localhost:3001/articles/${id}`)
   const data = await response.json()
-  console.dir(data)
   return data
 }
 
@@ -32,7 +31,7 @@ export const handleDeleteArticle = async (id: string) => {
   })
 }
 
-export const handleFormSubmit = async (newArticle) => {
+export const handleFormSubmit = async (newArticle, id: string | null) => {
   console.dir(newArticle)
   const data = { ...newArticle }
   const formData = new FormData()
@@ -51,8 +50,10 @@ export const handleFormSubmit = async (newArticle) => {
         data.append(pair[0], pair[1])
       }
     } */
-  fetch(`http://localhost:3001/articles/${data.id}`, {
-    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+  const method = id ? 'PUT' : 'POST'
+  const url = id ? `http://localhost:3001/articles/${id}` : `http://localhost:3001/articles`
+  fetch(`${url}`, {
+    method: method, // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     credentials: 'same-origin', // include, *same-origin, omit

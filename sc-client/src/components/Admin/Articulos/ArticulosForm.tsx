@@ -62,7 +62,7 @@ const ArticulosForm: FC<ArticulosFormProps> = () => {
   const navigate = useNavigate()
 
   const formSubmitAndNavigate = async () => {
-    await handleFormSubmit(newArticle)
+    await handleFormSubmit(newArticle, id)
     navigate(`/admin/articulos`, { replace: true })
   }
 

@@ -58,7 +58,7 @@ const ProductosForm: FC<ProductosFormProps> = () => {
   const navigate = useNavigate()
 
   const formSubmitAndNavigate = async () => {
-    await handleFormSubmit(newProduct)
+    await handleFormSubmit(newProduct, id)
     navigate(`/admin/productos`, { replace: true })
   }
 

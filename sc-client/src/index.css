@@ -81,6 +81,9 @@ button:hover {
   background-color: inherit;
   cursor: pointer;
 }
+img {
+  max-width: 100%;
+}
 input {
   text-rendering: auto;
   color: fieldtext;
@@ -96,8 +99,6 @@ input {
   -webkit-rtl-ordering: logical;
   cursor: text;
 }
-
-
 
 .fs-12 {
   font-size: 12px;
@@ -158,8 +159,15 @@ input {
   margin: 0;
 }
 
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+
 .d-flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

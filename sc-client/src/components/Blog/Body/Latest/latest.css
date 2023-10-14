@@ -1,0 +1,15 @@
+.latest {
+  margin-bottom: 40px;
+  border-top: 3px solid #000;
+}
+
+.latest-wrapper {
+  position: relative;
+  padding: 70px 0 40px;
+}
+.wrapper-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}

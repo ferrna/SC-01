@@ -1,23 +1,45 @@
 import React, { FC } from 'react'
 import './blogHero.css'
-import bh_image from '../../../../images/blog_farmaonline2x.png'
-import bh_image_min from '../../../../images/blog_farmaonline2x-min.png'
+import slide_image from '../../../../images/IMG_9667.jpg'
 import Slider from './Slider'
 
 interface BlogHeroProps {}
 
-const BlogHero: FC<BlogHeroProps> = ({}) => {
+const BlogHero: FC<BlogHeroProps> = () => {
   return (
-    <div className="blogHero hero">
-      <div className="hero-container absolute">
-        <div className="hero-image-texture absolute" />
+    <section className="blog-hero">
+      <div className="container">
+        {/* <div className="hero-image-texture" />
         <img src={bh_image} alt="" className="hero-image-img" />
-        <Slider />
+        <Slider /> */}
+        <section className="blog-hero-wrapper">
+          <div className="wrapper-row">
+            <div className="blog-hero-slider">
+              <div className="blog-slider">
+                <div className="slider-outer">
+                  <div className="bh_slide">
+                    <div className="bh_slide-image">
+                      <img src={slide_image} alt="" />
+                    </div>
+                    <div className="bh_slide-text">
+                      <div className="container">
+                        <h2 className="bh-slide-heading"></h2>
+                        <h1 className="bh_slide-title">
+                          Meet our <br /> new SC chef: <br /> Edin Achuras
+                        </h1>
+                        <a href="dfsdf" className="bh_slide-seemore">
+                          More
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-      <div>
-        <img src={bh_image_min} alt="" className="hero-image-img clone" />
-      </div>
-    </div>
+    </section>
   )
 }
 

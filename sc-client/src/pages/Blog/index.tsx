@@ -8,9 +8,11 @@ interface BlogProps {}
 const Blog: FC<BlogProps> = () => {
   return (
     <div id="blog">
-      <BlogHeader />
+      {/* <BlogHeader /> */}
       <main className="blog-main">
-        <BlogHome />
+        <div className="blog-main_inner">
+          <BlogHome />
+        </div>
       </main>
     </div>
   )

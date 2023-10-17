@@ -2,6 +2,7 @@ import { FC } from 'react'
 import './blogHome.css'
 import BlogHero from './Hero/BlogHero'
 import Latest from './Latest/Latest'
+import BlogSearch from './Search/BlogSearch'
 
 interface BlogHomeProps {}
 
@@ -9,6 +10,7 @@ const BlogHome: FC<BlogHomeProps> = () => {
   return (
     <div id="blog-home" className="relative">
       <BlogHero />
+      {/* <BlogSearch /> */}
       <Latest />
       <div className="bh-content">
         <section className="bh-body">asdpohjasfdhopásdhfohpsafphoas</section>

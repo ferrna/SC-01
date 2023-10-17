@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import './post.css'
+import './post.scss'
 import post_image from '../../../../images/IMG-270x300.jpg'
 
 interface PostProps {
@@ -11,7 +11,7 @@ interface PostProps {
 
 const Post: FC<PostProps> = () => {
   return (
-    <div className="col-md-4 latest-post">
+    <div className="col-12 latest-post">
       <a href="asda">
         <div className="post-image">
           <img width="300" height="201" src={post_image} alt="" loading="lazy" />

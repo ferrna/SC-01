@@ -11,7 +11,7 @@ const Latest: FC<LatestProps> = () => {
     <div className="latest">
       <div className="container">
         <div className="latest-wrapper">
-          <h2 className="section-title">Research &amp; Science</h2>
+          <h2 className="section-title">Cosmetica &amp; añadidos</h2>
           <div className="wrapper-row">
             <Post />
             <Post />

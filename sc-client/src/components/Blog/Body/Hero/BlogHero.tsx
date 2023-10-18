@@ -36,6 +36,41 @@ const BlogHero: FC<BlogHeroProps> = () => {
                 </div>
               </div>
             </div>
+            <div className="blog-hero-latest">
+              <div className="blog-hero_latest-wrapper">
+                <div className="blog-hero_latest-inner">
+                  <div className="blog-hero_latest-inner-wrapper">
+                    <h2>lo que se dice</h2>
+                    <div className="b-hero_latest-posts">
+                      <div>
+                        <div className="fs-14">Helser Odina</div>
+                        <a href="asdf">
+                          <div className="b-hero_latest-posttitle">
+                            Lorem ipsum dolor sit, amet aset adipisicing elit.
+                          </div>
+                        </a>
+                      </div>
+                      <div>
+                        <div className="fs-14">Helser Odina</div>
+                        <a href="asdf">
+                          <div className="b-hero_latest-posttitle">
+                            Lorem ipsum dolor sit, amet aset adipisicing elit.
+                          </div>
+                        </a>
+                      </div>
+                      <div>
+                        <div className="fs-14">Helser Odina</div>
+                        <a href="asdf">
+                          <div className="b-hero_latest-posttitle">
+                            Lorem ipsum dolor sit, amet aset adipisicing elit.
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

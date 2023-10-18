@@ -6,6 +6,7 @@
 
 .blog-main_inner {
   padding: 25px 0;
+  overflow: hidden;
 }
 
 .container {

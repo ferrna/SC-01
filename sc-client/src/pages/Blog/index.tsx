@@ -10,7 +10,9 @@ const Blog: FC<BlogProps> = () => {
     <div id="blog">
       <BlogHeader />
       <main className="blog-main">
-        <BlogHome />
+        <div className="blog-main_inner">
+          <BlogHome />
+        </div>
       </main>
     </div>
   )

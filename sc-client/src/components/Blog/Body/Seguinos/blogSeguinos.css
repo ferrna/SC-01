@@ -1,0 +1,35 @@
+.blog-seguinos {
+  color: #141414;
+  /* background: linear-gradient(
+    45deg,
+    rgba(247, 188, 158, 1) 0%,
+    rgba(78, 161, 179, 1) 85%,
+    rgba(200, 200, 195, 1) 100%
+  ); */
+  /* background: #d6249f;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  ); */
+  /* box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25); */
+  border-top: 1px solid var(--lt-color-gray-300);
+  border-bottom: 1px solid var(--lt-color-gray-300);
+  margin-bottom: 40px;
+  font-size: 24px;
+}
+.blog-seguinos-instagram-logo {
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}
+.blog-seguinos-wrapper {
+  position: relative;
+  padding: 40px 0 30px;
+}
+.blog-seguinos-inner {
+  text-align: center;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}

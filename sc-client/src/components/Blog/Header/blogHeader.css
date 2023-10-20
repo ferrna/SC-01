@@ -1,35 +1,92 @@
 #blog-header {
-  position: fixed;
-  top: 0px;
+  padding: 0;
+  border-bottom: 3px solid #000;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 99;
 }
 .blog-header-container {
-  background-color: rgba(255, 255, 255, 0.85);
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
+  padding: 20px 0;
+  position: relative;
+}
+.blog-header_bg-image {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 80px;
-  padding: 0 0.5rem;
-  border-bottom: 1px solid #e6e6e6;
-}
-.blog-header_logo-container {
-  border: 3px solid #434343;
-  padding: 3px;
-  margin: 0;
-  transform: translateY(6px);
-  z-index: 1;
-}
-.blog-header_logo {
-  background-color: #343434;
-  color: #fff;
-  font-size: 1.6rem;
   height: 100%;
-  padding: 0.4rem 1rem;
-  display: flex;
-  flex-direction: column;
+  -o-object-fit: contain;
+  object-fit: contain;
+  overflow: hidden;
+  opacity: 0.6;
 }
-.blog-header_logo > span {
-  font-style: italic;
+.b-header_logo-inner {
+  padding-bottom: 0;
+  position: relative;
 }
+.b-header_content {
+  padding: 0 30px 0 40px;
+  text-align: center;
+}
+.b-header_content > .logo {
+  display: block;
+  max-width: 245px;
+  margin: 0 auto;
+  font-size: 22px;
+  line-height: 19px;
+}
+.b-header_burger-button {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.b-header_button-line {
+  display: block;
+  width: 27px;
+  height: 3px;
+  margin-bottom: 5px;
+  background: #000;
+  border-radius: 2px;
+}
+.b-header_button-line:last-child {
+  margin-bottom: 0;
+}
+.b-header_search-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 5;
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.b-header_search-button_icon {
+  width: 28px;
+  height: 28px;
+}
+
+.b-header_search-icon {
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  stroke-width: 2px;
+  padding: 0 0 9px;
+}
+
+/*
+seguinos en instagram  
+background: linear-gradient(#f9e2f1 0%, #f9e2f1 50%, #f9d3d3 50%);
+  color: #000;
+  width: 315px;
+  height: 35px;
+  border-radius: 2px; */

@@ -1,0 +1,14 @@
+.blog-footer {
+  width: 100%;
+  background-color: var(--lt-color-white-500);
+  color: #454545;
+  font-size: 18px;
+}
+.blog-footer-wrapper {
+  position: relative;
+  padding: 14px 0 25px;
+}
+.blog-footer-content {
+  text-align: center;
+  max-width: 100%;
+}

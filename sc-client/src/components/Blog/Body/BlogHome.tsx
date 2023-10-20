@@ -4,6 +4,7 @@ import BlogHero from './Hero/BlogHero'
 import BlogSome from './Some/BlogSome'
 import BlogLatest from './Latest/BlogLatest'
 import BlogSeguinos from './Seguinos/BlogSeguinos'
+import BlogFooter from './Footer/BlogFooter'
 
 interface BlogHomeProps {}
 
@@ -14,6 +15,7 @@ const BlogHome: FC<BlogHomeProps> = () => {
       <BlogLatest />
       <BlogSeguinos />
       <BlogSome />
+      <BlogFooter />
     </div>
   )
 }

@@ -1,13 +1,3 @@
 #blog-home {
   min-height: 100vh;
 }
-
-.bh-content {
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-}
-.bh-body {
-  grid-column: span 3;
-  width: 100%;
-  padding: 4rem 1rem;
-}

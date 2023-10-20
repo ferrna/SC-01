@@ -1,15 +1,15 @@
-.latest-post {
+.blog-some-post {
   text-align: center;
   flex: 0 0 100%;
   max-width: 100%;
   margin-bottom: 2rem;
 }
 
-.post-image {
+.blog-some-post .post-image {
   position: relative;
   width: 100%;
 }
-.post-image img {
+.blog-some-post .post-image img {
   position: absolute;
   top: 0;
   left: 0;
@@ -19,62 +19,62 @@
   overflow: hidden;
 }
 /*  */
-.post-image::before {
+.blog-some-post .post-image::before {
   display: block;
   content: '';
   width: 100%;
   padding-top: 66.66667%;
 }
 
-.post-content {
+.blog-some-post .post-content {
   height: 192px;
   position: relative;
   line-height: 1.2;
 }
-.post-content .container {
+.blog-some-post .post-content .container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.post-category {
+.blog-some-post .post-category {
   font-size: 14px;
   text-transform: uppercase;
 }
-.post-title {
+.blog-some-post .post-title {
   font-size: 24px;
   font-weight: 700;
   margin: 15px 0;
 }
-.post-date {
+.blog-some-post .post-date {
   font-family: serif;
   font-size: 16px;
   font-style: italic;
 }
 
-.latest-post a {
+.blog-some-post a {
   position: relative;
   display: block;
   height: 100%;
   text-decoration: none;
 }
-.latest-post:nth-child(1) a {
+.blog-some-post:nth-child(1) a {
   background-color: #eeeeec;
 }
-.latest-post:nth-child(2) a {
+.blog-some-post:nth-child(2) a {
   background-color: #ffeceb;
 }
-.latest-post:nth-child(3) a {
+.blog-some-post:nth-child(3) a {
   background-color: #faf1c4;
 }
 @media (min-width: 601px) {
-  .latest-post {
+  .blog-some-post {
     flex: 0 0 33.3333%;
     max-width: 33.3333%;
 
     margin: 0 auto;
   }
-  .latest-post:nth-child(2) .post-image {
+  .blog-some-post:nth-child(2) .post-image {
     position: absolute;
     bottom: 0;
   }

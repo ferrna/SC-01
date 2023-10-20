@@ -11,7 +11,7 @@ interface PostProps {
 
 const Post: FC<PostProps> = () => {
   return (
-    <div className="col-12 latest-post">
+    <div className="col-12 blog-some-post">
       <a href="asda">
         <div className="post-image">
           <img width="300" height="201" src={post_image} alt="" loading="lazy" />

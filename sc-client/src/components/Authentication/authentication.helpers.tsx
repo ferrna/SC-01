@@ -54,3 +54,14 @@ export const fetchRequest = async (action: string, data, navigate?) => {
       break
   }
 }
+
+export const passwordValidator = (value: string) => {
+  const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+  if (value.length < 6) {
+    return { error: true, content: 'La contraseña debe tener al menos 6 caracteres.' }
+  }
+  if (!regex.test(value)) {
+    return { error: true, content: 'La contraseña debe tener al menos una letra y un número.' }
+  }
+  return { error: false, content: '' }
+}

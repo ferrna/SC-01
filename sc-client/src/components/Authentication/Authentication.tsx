@@ -1,7 +1,7 @@
-import React, { FC, useState } from 'react'
-import './authentication.css'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import './authentication.scss'
 import { useNavigate } from 'react-router-dom'
-import { fetchRequest } from './authentication.helpers'
+import { fetchRequest, passwordValidator } from './authentication.helpers'
 
 interface AuthenticationProps {}
 
@@ -14,6 +14,9 @@ const Authentication: FC<AuthenticationProps> = () => {
   const [formData, setFormData] = useState<AuthenticationFormData>({ username: '', password: '' })
   const navigate = useNavigate()
 
+  const passwordInputRef = useRef<HTMLInputElement>(null)
+  const [passwordError, setPasswordError] = useState({ error: false, content: '' })
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -22,10 +25,23 @@ const Authentication: FC<AuthenticationProps> = () => {
     fetchRequest(action, formData, navigate)
   }
 
+  useEffect(() => {
+    if (document.activeElement === passwordInputRef?.current) {
+      const timer = setTimeout(() => {
+        if (passwordInputRef != null && passwordInputRef.current?.value === formData.password) {
+          setPasswordError(passwordValidator(passwordInputRef.current.value))
+        }
+      }, 500)
+      return () => {
+        clearTimeout(timer)
+      }
+    }
+  }, [formData.password])
+
   return (
     <section className="authentication">
-      <div className="container">
-        <div>
+      <div className="authentication-container">
+        <div className="authentication-form_field">
           <label htmlFor="username">Nombre de usuario:</label>
           <input
             type="text"
@@ -35,7 +51,7 @@ const Authentication: FC<AuthenticationProps> = () => {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <div>
+        <div className={'authentication-form_field passwordField ' + (passwordError.error ? 'error' : '')}>
           <label htmlFor="password">Contraseña:</label>
           <input
             type="password"
@@ -43,9 +59,11 @@ const Authentication: FC<AuthenticationProps> = () => {
             placeholder="********"
             value={formData.password}
             onChange={(e) => handleOnChange(e)}
+            ref={passwordInputRef}
           />
+          <span className="passwordErrorMessage">{passwordError.content}</span>
         </div>
-        <div className="container-buttons">
+        <div className="authentication-buttons">
           <button id="login-button" onClick={() => handleRequest('logIn', navigate)}>
             Ingresar
           </button>

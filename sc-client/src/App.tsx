@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './pages/Layout/Layout'
 import Admin from './pages/Admin/Admin'
 import Blog from './pages/Blog'
+import ErrorMessage from './components/common/ErrorMessage'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Layout />} />
         <Route path="/admin/*" element={<Admin />} />
         <Route path="/articulos/*" element={<Blog />} />
+        <Route path="*" element={<ErrorMessage>Ops! Esta página aún no ha sido creada.</ErrorMessage>} />
       </Routes>
     </div>
   )

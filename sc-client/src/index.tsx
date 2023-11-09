@@ -4,6 +4,10 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
+import axios from 'axios'
+
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND
+//axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'https://sc-api.herokuapp.com';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

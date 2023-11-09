@@ -1,69 +1,60 @@
-import { FC } from 'react'
-import { Route, Routes, NavLink } from 'react-router-dom'
-import ArticulosAdmin from '../../components/Admin/Articulos/ArticulosAdmin'
+import { FC, useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './admin.styles.css'
+
+import ArticulosAdmin from '../../components/Admin/Articulos/ArticulosAdmin'
 import ArticulosForm from '../../components/Admin/Articulos/ArticulosForm'
 import ProductosAdmin from '../../components/Admin/Productos/ProductosAdmin'
 import ProductosForm from '../../components/Admin/Productos/ProductosForm'
+import AdminHeader from './AdminHeader/AdminHeader'
+
+import axios from 'axios'
+import Authentication from '../../components/Authentication/Authentication'
 
 interface AdminProps {}
 
-const Admin: FC<AdminProps> = ({}) => {
-  const isActiveStyle = (navObj) => {
-    return navObj.isActive ? 'tab-button active' : 'tab-button'
-  }
+const Admin: FC<AdminProps> = () => {
+  const [loadContent, setLoadContent] = useState<boolean>(false)
+
+  useEffect(() => {
+    let mounted = true
+    if (mounted) {
+      axios({
+        method: 'get',
+        withCredentials: true,
+        url: `/auth/admin-route`,
+      })
+        .then(() => {
+          if (mounted) setLoadContent(true)
+        })
+        .catch(() => {
+          if (mounted) setLoadContent(false)
+        })
+    }
+    return () => {
+      mounted = false
+      return
+    }
+  }, [])
 
   return (
     <div id="page_admin">
-      <div className="admin_header">
-        <div className="tabs">
-          <div className="tab">
-            <p>Articulos</p>
-            <div className="tab-buttons">
-              <NavLink end to="articulos" className={isActiveStyle}>
-                <p>Panel</p>
-              </NavLink>
-              <NavLink to="articulos/crear" className={isActiveStyle}>
-                <p>Crear</p>
-              </NavLink>
-              <NavLink to="articulos/editar/" className={isActiveStyle}>
-                <p>Editar</p>
-              </NavLink>
-            </div>
+      {loadContent ? (
+        <>
+          <AdminHeader />
+          <div className="admin_body">
+            <Routes>
+              <Route path="/" element={<div>Desktop</div>} />
+              <Route path="articulos" element={<ArticulosAdmin />} />
+              <Route path="articulos/crear" element={<ArticulosForm />} />
+              <Route path="productos" element={<ProductosAdmin />} />
+              <Route path="productos/crear" element={<ProductosForm />} />
+            </Routes>
           </div>
-          <div className="tab">
-            <p>Productos</p>
-            <div className="tab-buttons">
-              <NavLink end to="productos" className={isActiveStyle}>
-                <p>Panel</p>
-              </NavLink>
-              <NavLink to="productos/crear" className={isActiveStyle}>
-                <p>Crear</p>
-              </NavLink>
-              <NavLink to="productos/editar/" className={isActiveStyle}>
-                <p>Editar</p>
-              </NavLink>
-            </div>
-          </div>
-          <div className="tab">
-            <p>Datos</p>
-            <div className="tab-buttons">
-              <NavLink to="datos" className={isActiveStyle}>
-                <p>Panel</p>
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="admin_body">
-        <Routes>
-          <Route path="/" element={<div>Desktop</div>} />
-          <Route path="articulos" element={<ArticulosAdmin />} />
-          <Route path="articulos/crear" element={<ArticulosForm />} />
-          <Route path="productos" element={<ProductosAdmin />} />
-          <Route path="productos/crear" element={<ProductosForm />} />
-        </Routes>
-      </div>
+        </>
+      ) : (
+        <Authentication />
+      )}
     </div>
   )
 }
@@ -71,5 +62,5 @@ const Admin: FC<AdminProps> = ({}) => {
 export default Admin
 
 //TODO:
-// - [ ] Add a "loading" state to ArticulosAdmin.tsx
-// - [ ] Creation and editing's routes should be the same?
+// - [x] Add a "loading" state to ArticulosAdmin.tsx
+// - [ ] Creation and editing's routes should be the same

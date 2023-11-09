@@ -8,57 +8,12 @@
   font: normal normal normal 1.2rem/1.8rem Montserrat;
 }
 
-/* Admin header styles */
-.admin_header {
-  width: 600px;
-  max-width: 60%;
-  margin: 0 auto;
-  height: 60px;
-  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  background-color: var(--lt-color-gray-300);
-}
-.tabs {
-  display: flex;
-  justify-content: stretch;
-  align-items: stretch;
-  height: 100%;
-}
-.tab {
-  border: 1px solid var(--lt-color-gray-500);
-  flex-grow: 1;
-}
-.tab:not(:last-child) {
-  border-right: none;
-}
-
-.tab-buttons {
-  display: flex;
-  font-size: 1rem;
-  align-items: stretch;
-}
-.tab-button {
-  border: 1px solid var(--lt-color-gray-500);
-  border-bottom: none;
-  flex-grow: 1;
-}
-.tab-button {
-  border-right: none;
-}
-.tab-button:first-child {
-  border-left: none;
-}
-.tab-button.active {
-  background-color: var(--lt-color-gray-500);
-}
-/* ... Admin header styles */
-
 /* Admin body styles */
 .admin_body {
   width: 100%;
   max-width: 960px;
   min-height: 82vh;
-  margin: .6rem auto;
+  margin: 0.6rem auto;
   padding: 20px;
   background-color: var(--lt-color-gray-300);
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
@@ -66,6 +21,5 @@
   border: 1px solid var(--lt-color-gray-400);
   position: relative; /* for loader */
 }
-
 
 /* ... Admin body styles */

@@ -47,6 +47,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "sass": "^1.69.3"
+    "sass": "^1.69.3",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8"
   }
 }

@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
 import './authentication.scss'
-import { useNavigate } from 'react-router-dom'
 import { fetchRequest, passwordValidator } from './authentication.helpers'
 
 interface AuthenticationProps {}
@@ -12,8 +11,7 @@ interface AuthenticationFormData {
 
 const Authentication: FC<AuthenticationProps> = () => {
   const [formData, setFormData] = useState<AuthenticationFormData>({ username: '', password: '' })
-  const navigate = useNavigate()
-
+  
   const passwordInputRef = useRef<HTMLInputElement>(null)
   const [passwordError, setPasswordError] = useState({ error: false, content: '' })
 
@@ -21,8 +19,8 @@ const Authentication: FC<AuthenticationProps> = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleRequest = async (action: string, navigate?) => {
-    fetchRequest(action, formData, navigate)
+  const handleRequest = async (action: string) => {
+    fetchRequest(action, formData)
   }
 
   useEffect(() => {
@@ -64,7 +62,7 @@ const Authentication: FC<AuthenticationProps> = () => {
           <span className="passwordErrorMessage">{passwordError.content}</span>
         </div>
         <div className="authentication-buttons">
-          <button id="login-button" onClick={() => handleRequest('logIn', navigate)}>
+          <button id="login-button" onClick={() => handleRequest('logIn')}>
             Ingresar
           </button>
           <button id="signin-button" onClick={() => handleRequest('register')}>

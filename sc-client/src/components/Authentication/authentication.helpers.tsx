@@ -1,20 +1,21 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-export const fetchRequest = async (action: string, data, navigate?) => {
+export const fetchRequest = async (action: string, data) => {
   const headers = new Headers()
-  headers['Access-Control-Allow-Origin'] = '*'
+  headers['Access-Control-Allow-Origin'] = 'http://localhost:3001'
   headers['Accept'] = 'application/json'
   headers['Content-type'] = 'application/json'
+  console.dir(data)
   const options = {
     ...headers,
     method: 'POST',
-    credentials: 'include',
-    body: JSON.stringify({ ...data }),
+    withCredentials: true,
+    data,
   }
   switch (action) {
     case 'register':
-      return axios('auth/register', options)
+      return await axios('users', options)
         .then((response) => {
           if (response.statusText === 'OK') {
             Swal.fire({
@@ -37,10 +38,10 @@ export const fetchRequest = async (action: string, data, navigate?) => {
           console.log(error.message)
         })
     case 'logIn':
-      return axios('auth/login', options)
+      return await axios('auth/login', options)
         .then((response) => {
           if (response.statusText === 'OK') {
-            navigate('/')
+            window.location.reload()
           }
         })
         .catch((error) => {
